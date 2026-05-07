@@ -1,0 +1,21 @@
+{
+  "run_root": "runs/local_evo",
+  "max_cycles": 1000000,
+  "max_lineages": 1000000,
+  "max_failures_per_lineage": 3,
+  "n_seeds": 4,
+  "seed_class_dim": 30,
+  "variant_provider": "llamacpp",
+  "variant_model": null,
+  "adaptive_provider": "llamacpp",
+  "adaptive_model": null,
+  "budget": 1000000,
+  "repetitions": 6,
+  "n_ideas": 8,
+  "n_adaptive_tries": 3,
+  "keys": "llm_keys.json",
+  "cycle_dir": "runs\\local_evo\\cycle_0004__lineage_000___clear_archive_original",
+  "parent_algorithm": "runs\\local_evo\\lineage_000\\champion_gen3__adaptive_attempt_1.py",
+  "target_method": "_clear_archive_original",
+  "timestamp": "2026-04-18T02:27:06.499464"
+}

@@ -1,0 +1,53 @@
+Experiment: cycle_0008__lineage_003__step3__select_survivors_batch
+Timestamp: 2026-04-25T04:51:40.363221
+
+============================================================
+ALGORITHM RANKINGS (by geometric mean of finite positive tasks)
+============================================================
+
+   1. original.py                              [original  ]  geomean=1.308300e+00  (24/24 valid)
+   2. adaptive_attempt_2.py                    [adaptive  ]  geomean=2.355434e+00  (24/24 valid)
+   3. variant_05_idea_0.py                     [variant   ]  geomean=2.721877e+00  (24/24 valid)
+   4. variant_09_idea_0.py                     [variant   ]  geomean=3.798155e+00  (24/24 valid)
+   5. adaptive_attempt_3.py                    [adaptive  ]  geomean=5.114363e+00  (24/24 valid)
+   6. variant_02_idea_0.py                     [variant   ]  geomean=5.855831e+00  (24/24 valid)
+   7. adaptive_attempt_1.py                    [adaptive  ]  geomean=6.337489e+00  (24/24 valid)
+   8. variant_07_idea_0.py                     [variant   ]  geomean=8.007521e+00  (24/24 valid)
+   9. variant_10_idea_0.py                     [variant   ]  geomean=4.282053e+01  (24/24 valid)
+  10. variant_03_idea_0.py                     [variant   ]  geomean=5.087253e+01  (24/24 valid)
+  11. variant_08_idea_0.py                     [variant   ]  geomean=1.153897e+02  (24/24 valid)
+
+============================================================
+PER-TASK BEST VARIANTS
+============================================================
+
+Task  0: variant_07_idea_0.py  (error=5.178898e-02)
+Task  1: variant_05_idea_0.py  (error=3.549066e-02)
+Task  2: original.py  (error=2.877613e-01)
+Task  3: original.py  (error=1.347502e-01)
+Task  4: variant_05_idea_0.py  (error=5.064727e-01)
+Task  5: original.py  (error=9.226954e-05)
+Task  6: original.py  (error=4.082087e-02)
+Task  7: original.py  (error=8.003612e-02)
+Task  8: original.py  (error=2.510861e-01)
+Task  9: original.py  (error=7.031523e-02)
+Task 10: variant_05_idea_0.py  (error=1.553683e+01)
+Task 11: variant_09_idea_0.py  (error=1.164549e+01)
+Task 12: original.py  (error=1.843518e+01)
+Task 13: original.py  (error=2.988347e+00)
+Task 14: original.py  (error=2.851132e+00)
+Task 15: variant_09_idea_0.py  (error=2.804955e+00)
+Task 16: variant_09_idea_0.py  (error=9.906170e+01)
+Task 17: variant_05_idea_0.py  (error=3.085410e+01)
+Task 18: original.py  (error=1.701105e+01)
+Task 19: original.py  (error=1.652616e+01)
+Task 20: original.py  (error=2.055197e+01)
+Task 21: original.py  (error=4.509719e+00)
+Task 22: variant_09_idea_0.py  (error=7.997768e+00)
+Task 23: variant_05_idea_0.py  (error=1.745881e+01)
+
+WIN COUNTS:
+  original.py: 14 wins
+  variant_05_idea_0.py: 5 wins
+  variant_09_idea_0.py: 4 wins
+  variant_07_idea_0.py: 1 wins

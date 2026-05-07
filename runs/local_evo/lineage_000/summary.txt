@@ -1,0 +1,8 @@
+Experiment: lineage_000
+Timestamp: 2026-04-17T23:03:35.518666
+
+============================================================
+ALGORITHM RANKINGS (by geometric mean of finite positive tasks)
+============================================================
+
+   1. seed_2_CovarianceGuidedEvolutionStrategy.py [seed      ]  geomean=2.715152e+03  (24/24 valid)

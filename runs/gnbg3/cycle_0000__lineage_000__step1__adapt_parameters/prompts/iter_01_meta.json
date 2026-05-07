@@ -1,0 +1,14 @@
+{
+  "id": "A",
+  "name": "Geometry / spatial",
+  "iteration": 1,
+  "focus_task": 16,
+  "focus_mode": "phase1_random",
+  "history_best_value": 2220.7218889877586,
+  "history_best_source": "original.py",
+  "history_best": {
+    "value": 2220.7218889877586,
+    "source_algo": "original.py",
+    "source_dir": "runs\\gnbg3\\cycle_0000__lineage_000__step1__adapt_parameters"
+  }
+}

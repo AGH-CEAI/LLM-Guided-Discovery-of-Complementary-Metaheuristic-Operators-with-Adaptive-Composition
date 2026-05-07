@@ -1,0 +1,11 @@
+{
+  "lineage_id": 0,
+  "plan": [
+    "_eval_wrapper",
+    "_clip_to_bounds_batch",
+    "_update_velocity_batch"
+  ],
+  "max_picks_per_method": 2,
+  "banned_methods": [],
+  "pick_counts": {}
+}

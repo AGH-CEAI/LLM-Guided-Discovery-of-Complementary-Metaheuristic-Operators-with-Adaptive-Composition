@@ -1,0 +1,14 @@
+{
+  "id": "A",
+  "name": "Geometry / spatial",
+  "iteration": 1,
+  "focus_task": 16,
+  "focus_mode": "phase1_random",
+  "history_best_value": 42.89900324942932,
+  "history_best_source": "variant_02_catB_t21_idea_0.py",
+  "history_best": {
+    "value": 42.89900324942932,
+    "source_algo": "variant_02_catB_t21_idea_0.py",
+    "source_dir": "runs\\gnbg3\\cycle_0003__lineage_001__step1__crossover_batch"
+  }
+}

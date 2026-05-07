@@ -1,0 +1,14 @@
+{
+  "id": "F",
+  "name": "Temporal / dynamical",
+  "iteration": 6,
+  "focus_task": 5,
+  "focus_mode": "phase2_max_variance",
+  "history_best_value": 1.1918827363654033e-05,
+  "history_best_source": "variant_08_catH_t12_idea_0.py",
+  "history_best": {
+    "value": 1.1918827363654033e-05,
+    "source_algo": "variant_08_catH_t12_idea_0.py",
+    "source_dir": "runs\\gnbg3\\cycle_0001__lineage_000__step2__update_strategy_scores"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "run_root": "runs/local_evo",
+  "max_cycles": 1000000,
+  "max_lineages": 1000000,
+  "max_failures_per_lineage": 3,
+  "n_seeds": 4,
+  "seed_class_dim": 30,
+  "variant_provider": "llamacpp",
+  "variant_model": null,
+  "adaptive_provider": "llamacpp",
+  "adaptive_model": null,
+  "budget": 1000000,
+  "repetitions": 6,
+  "n_ideas": 8,
+  "n_adaptive_tries": 3,
+  "keys": "llm_keys.json",
+  "start_time": "2026-04-18T00:13:28.208701"
+}

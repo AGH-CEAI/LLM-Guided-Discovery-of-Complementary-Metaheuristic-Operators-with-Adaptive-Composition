@@ -1,0 +1,34 @@
+{
+  "lineage_id": 8,
+  "plan": [
+    "_update_operator_rewards",
+    "_ensure_positive_definite",
+    "_compute_diversity"
+  ],
+  "max_picks_per_method": 2,
+  "banned_methods": [
+    "_adapt_covariance",
+    "_adapt_covariance_original",
+    "_adapt_covariance_variant_01",
+    "_adapt_covariance_variant_06",
+    "_adapt_covariance_variant_08",
+    "_adapt_covariance_variant_09",
+    "_adapt_step_size",
+    "_sample_trials_batch",
+    "_select_operator_thompson",
+    "_select_survivors_batch"
+  ],
+  "pick_counts": {
+    "_adapt_covariance": 2,
+    "_adapt_step_size": 2,
+    "_sample_trials_batch": 2,
+    "_adapt_covariance_variant_09": 2,
+    "_adapt_covariance_variant_01": 2,
+    "_adapt_covariance_variant_06": 2,
+    "_select_survivors_batch": 2,
+    "_adapt_covariance_variant_08": 2,
+    "_adapt_covariance_original": 2,
+    "_select_operator_thompson": 2,
+    "_update_operator_rewards": 1
+  }
+}

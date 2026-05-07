@@ -1,0 +1,275 @@
+{
+  "lineage_id": 2,
+  "plan": [
+    "_adapt_parameters",
+    "_select_survivors_batch",
+    "_crossover_batch"
+  ],
+  "plan_roles": {
+    "_adapt_parameters": "leaf",
+    "_select_survivors_batch": "observer",
+    "_crossover_batch": "observer"
+  },
+  "max_picks_per_method": 2.0,
+  "weak_pick_cost": 0.5,
+  "rejected_pick_cost": 1.0,
+  "strong_improvement_ratio": 0.1,
+  "rejected_streak_cap": 3,
+  "banned_methods": [
+    "_mutate_batch"
+  ],
+  "pick_costs": {
+    "_adapt_parameters": 1.0,
+    "_mutate_batch": 2.0,
+    "_select_survivors_batch": 1.0
+  },
+  "rejected_streaks": {
+    "_adapt_parameters": 1,
+    "_mutate_batch": 2,
+    "_select_survivors_batch": 0
+  },
+  "method_metadata": {
+    "__init__": {
+      "loc": 26,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [],
+      "in_call_loop": false,
+      "role": "init"
+    },
+    "__call__": {
+      "loc": 2,
+      "calls": [
+        "_optimize"
+      ],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_initialize_population": {
+      "loc": 19,
+      "calls": [
+        "_clip_to_bounds"
+      ],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": true,
+      "called_by": [
+        "_optimize"
+      ],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_clip_to_bounds": {
+      "loc": 3,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_initialize_population",
+        "_evaluate_batch"
+      ],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_build_ring_topology": {
+      "loc": 6,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_optimize"
+      ],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_compute_population_centroid": {
+      "loc": 6,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_mutate_batch"
+      ],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_update_direction_memory": {
+      "loc": 13,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": false,
+      "called_by": [
+        "_optimize"
+      ],
+      "in_call_loop": false,
+      "role": "control_flow"
+    },
+    "_compute_directional_bias": {
+      "loc": 13,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_mutate_batch"
+      ],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_mutate_batch": {
+      "loc": 35,
+      "calls": [
+        "_compute_directional_bias",
+        "_compute_population_centroid"
+      ],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_optimize"
+      ],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_crossover_batch": {
+      "loc": 20,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": true,
+      "called_by": [
+        "_optimize"
+      ],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_evaluate_batch": {
+      "loc": 12,
+      "calls": [
+        "_clip_to_bounds"
+      ],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_optimize"
+      ],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_select_survivors_batch": {
+      "loc": 39,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_optimize"
+      ],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_compute_diversity": {
+      "loc": 5,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_restart_if_stagnant"
+      ],
+      "in_call_loop": false,
+      "role": "observer"
+    },
+    "_adapt_parameters": {
+      "loc": 63,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "_optimize"
+      ],
+      "in_call_loop": false,
+      "role": "leaf"
+    },
+    "_restart_if_stagnant": {
+      "loc": 30,
+      "calls": [
+        "_compute_diversity"
+      ],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": true,
+      "called_by": [
+        "_optimize"
+      ],
+      "in_call_loop": false,
+      "role": "control_flow"
+    },
+    "_optimize": {
+      "loc": 57,
+      "calls": [
+        "_adapt_parameters",
+        "_build_ring_topology",
+        "_crossover_batch",
+        "_evaluate_batch",
+        "_initialize_population",
+        "_mutate_batch",
+        "_restart_if_stagnant",
+        "_select_survivors_batch",
+        "_update_direction_memory"
+      ],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": true,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": false,
+      "role": "control_flow"
+    }
+  }
+}

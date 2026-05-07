@@ -1,0 +1,14 @@
+{
+  "id": "D",
+  "name": "Fitness-landscape / rank-based",
+  "iteration": 4,
+  "focus_task": 9,
+  "focus_mode": "phase1_random",
+  "history_best_value": 9.520159114622954,
+  "history_best_source": "variant_01_catA_t16_idea_0.py",
+  "history_best": {
+    "value": 9.520159114622954,
+    "source_algo": "variant_01_catA_t16_idea_0.py",
+    "source_dir": "runs\\gnbg3\\cycle_0000__lineage_000__step1__adapt_parameters"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "C",
+  "name": "Information-theoretic / distributional",
+  "iteration": 3,
+  "focus_task": 6,
+  "focus_mode": "phase1_random",
+  "history_best_value": 36.93391036793494,
+  "history_best_source": "variant_01_catA_t11_idea_0.py",
+  "history_best": {
+    "value": 36.93391036793494,
+    "source_algo": "variant_01_catA_t11_idea_0.py",
+    "source_dir": "runs\\gnbg3\\cycle_0002__lineage_000__step3__restart_if_needed"
+  }
+}

@@ -1,0 +1,45 @@
+Experiment: cycle_0004__lineage_001__step2__adapt_parameters_batch
+Timestamp: 2026-04-23T02:30:25.817604
+
+============================================================
+ALGORITHM RANKINGS (by geometric mean of finite positive tasks)
+============================================================
+
+   1. original.py                              [original  ]  geomean=3.686177e-03  (24/24 valid)
+   2. variant_07_idea_0.py                     [variant   ]  geomean=1.759357e-02  (24/24 valid)
+   3. adaptive_attempt_2.py                    [adaptive  ]  geomean=2.597681e-02  (24/24 valid)
+   4. variant_05_idea_0.py                     [variant   ]  geomean=3.465391e+01  (24/24 valid)
+
+============================================================
+PER-TASK BEST VARIANTS
+============================================================
+
+Task  0: SKIPPED (trivial)
+Task  1: original.py  (error=3.412855e-01)
+Task  2: original.py  (error=6.066678e-08)
+Task  3: SKIPPED (trivial)
+Task  4: variant_07_idea_0.py  (error=1.271171e+00)
+Task  5: original.py  (error=1.367386e+00)
+Task  6: original.py  (error=1.321751e-07)
+Task  7: original.py  (error=2.769454e-07)
+Task  8: variant_07_idea_0.py  (error=1.088398e+03)
+Task  9: original.py  (error=3.694661e-06)
+Task 10: original.py  (error=3.598147e-05)
+Task 11: original.py  (error=3.221561e-05)
+Task 12: variant_07_idea_0.py  (error=1.552000e+03)
+Task 13: original.py  (error=4.590017e+01)
+Task 14: original.py  (error=5.856714e+00)
+Task 15: SKIPPED (trivial)
+Task 16: variant_05_idea_0.py  (error=4.013630e-02)
+Task 17: original.py  (error=1.849436e-06)
+Task 18: original.py  (error=2.723466e-04)
+Task 19: original.py  (error=1.823489e-02)
+Task 20: original.py  (error=5.000000e+00)
+Task 21: original.py  (error=5.000111e+01)
+Task 22: original.py  (error=9.574088e-04)
+Task 23: original.py  (error=2.510144e+00)
+
+WIN COUNTS:
+  original.py: 17 wins
+  variant_07_idea_0.py: 3 wins
+  variant_05_idea_0.py: 1 wins

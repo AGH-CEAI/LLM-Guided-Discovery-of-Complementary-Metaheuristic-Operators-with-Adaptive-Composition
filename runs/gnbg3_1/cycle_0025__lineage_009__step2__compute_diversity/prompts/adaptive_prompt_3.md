@@ -1,0 +1,986 @@
+Given benchmark results on 24 optimization test functions, create an ADAPTIVE version of the algorithm that automatically selects the best `_compute_diversity` strategy during optimization.
+
+BENCHMARK RESULTS — per-task errors (lower = better, -inf = crashed):
+Task   original.py             variant_01_idea_0.py    variant_02_idea_0.py    variant_03_idea_0.py    variant_04_idea_0.py    variant_06_idea_0.py    variant_07_idea_0.py    variant_08_idea_0.py    variant_09_idea_0.py    variant_10_idea_0.py    
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0      5.636751e-06            3.990522e-01            5.042939e-01            1.865200e+00            3.915807e-01            6.634466e-01            3.653713e+00            4.757623e-01            8.933761e-08            1.494253e+02            
+1      7.577505e-06            4.565570e-01            5.426693e-01            3.914299e+00            4.562807e-01            6.421127e-01            7.329689e+00            5.366148e-01            1.726985e-07            3.116974e+02            
+2      1.640699e-04            5.765743e-01            7.092131e-01            2.114920e+01            9.322124e-01            1.008032e+00            4.287184e+01            7.748041e-01            5.423417e-05            1.129518e+03            
+3      1.162138e-03            6.623902e-01            7.704329e-01            1.993030e+01            9.451206e-01            1.863287e+00            3.258049e+01            7.682893e-01            3.203505e-04            4.405345e+02            
+4      5.120403e-02            8.501189e-01            8.890534e-01            1.879287e+00            9.235466e-01            9.803128e-01            2.378347e+00            8.769786e-01            2.320395e-02            6.528442e+00            
+5      1.000000e-08            3.277953e-01            2.805186e-01            1.046754e+04            2.119154e-01            8.918054e-01            1.451157e+05            2.581553e-01            1.000000e-08            1.968064e+10            
+6      2.449483e-06            4.038353e-01            4.420708e-01            1.805522e+02            4.038758e-01            4.009717e-01            1.616516e+01            3.545190e-01            4.315395e-07            1.750971e+04            
+7      1.241785e-04            6.003567e-01            7.153882e-01            1.246802e+01            6.554772e-01            8.191674e-01            2.531071e+01            7.204435e-01            1.253606e-05            6.206469e+02            
+8      5.319435e-03            7.340320e-01            9.320215e-01            6.330357e+00            8.655535e-01            1.022498e+00            9.790892e+00            8.773082e-01            1.799495e-03            6.792434e+01            
+9      5.540929e-04            3.957143e-01            5.944979e-01            3.852609e+01            5.337601e-01            8.564087e-01            3.384302e+00            4.415631e-01            4.399769e-04            5.574644e+02            
+10     2.547062e+01            7.933493e+00            7.176075e+00            1.109404e+01            7.433031e+00            6.963975e+00            1.429339e+01            7.272906e+00            3.936457e+01            5.576876e+02            
+11     7.254975e+01            6.409835e+00            9.288624e+00            4.657804e+01            5.028935e+00            9.970124e+00            6.478789e+01            8.003470e+00            4.228558e+01            2.157407e+03            
+12     2.211983e+01            5.918043e+00            6.142308e+00            1.021943e+01            4.786943e+00            7.173066e+00            1.601731e+01            5.652851e+00            3.063783e+01            3.503057e+02            
+13     3.406117e+00            3.077604e+00            2.886386e+00            6.601503e+00            2.852267e+00            2.911512e+00            1.019025e+01            3.095323e+00            4.538411e+00            6.874612e+01            
+14     2.662135e+00            2.674636e+00            2.701794e+00            5.444201e+00            2.662156e+00            2.697675e+00            3.498229e+00            2.627647e+00            2.676015e+00            2.249984e+01            
+15     2.744321e+00            2.365712e+00            2.396733e+00            2.285359e+00            2.422760e+00            2.232537e+00            2.524023e+00            2.307859e+00            3.141322e+00            4.454986e+00            
+16     6.815839e+01            8.970445e+01            7.180115e+01            3.882706e+02            5.172654e+01            6.844696e+01            1.030778e+02            7.969232e+01            7.471930e+01            3.440349e+04            
+17     2.022068e+03            5.393226e+02            6.503324e+02            1.797245e+03            4.666513e+01            2.364180e+01            3.887250e+03            6.190412e+02            5.387587e+02            2.072406e+05            
+18     1.608149e+01            1.411793e+01            1.083295e+01            1.382702e+01            1.128389e+01            1.094280e+01            1.881257e+01            1.189818e+01            1.516647e+01            9.555371e+01            
+19     1.262282e+01            1.138986e+01            1.119133e+01            6.846120e+01            1.091923e+01            1.074706e+01            3.151310e+01            1.364107e+01            3.034549e+01            6.370866e+02            
+20     2.128002e+01            1.724529e+01            1.959586e+01            1.852236e+01            1.697590e+01            1.851824e+01            1.891806e+01            1.714667e+01            2.204231e+01            5.340118e+01            
+21     4.509968e+00            4.542993e+00            4.320969e+00            4.852698e+00            4.487457e+00            4.418197e+00            4.868475e+00            4.393728e+00            4.490789e+00            6.135377e+00            
+22     3.734344e+00            9.735239e+00            7.876996e+00            6.549184e+00            7.733635e+00            1.052799e+01            7.353100e+00            7.223028e+00            1.001211e+01            2.480122e+01            
+23     1.801256e+01            1.817169e+01            2.016505e+01            2.532934e+01            2.367816e+01            1.858420e+01            2.091623e+01            1.617879e+01            2.245931e+01            1.107987e+02            
+
+BEST VARIANT PER FUNCTION (non-trivial tasks only):
+Task  0: variant_09_idea_0.py  (error=8.933761e-08)
+Task  1: variant_09_idea_0.py  (error=1.726985e-07)
+Task  2: variant_09_idea_0.py  (error=5.423417e-05)
+Task  3: variant_09_idea_0.py  (error=3.203505e-04)
+Task  4: variant_09_idea_0.py  (error=2.320395e-02)
+Task  5: original.py  (error=1.000000e-08)
+Task  6: variant_09_idea_0.py  (error=4.315395e-07)
+Task  7: variant_09_idea_0.py  (error=1.253606e-05)
+Task  8: variant_09_idea_0.py  (error=1.799495e-03)
+Task  9: variant_09_idea_0.py  (error=4.399769e-04)
+Task 10: variant_06_idea_0.py  (error=6.963975e+00)
+Task 11: variant_04_idea_0.py  (error=5.028935e+00)
+Task 12: variant_04_idea_0.py  (error=4.786943e+00)
+Task 13: variant_04_idea_0.py  (error=2.852267e+00)
+Task 14: variant_08_idea_0.py  (error=2.627647e+00)
+Task 15: variant_06_idea_0.py  (error=2.232537e+00)
+Task 16: variant_04_idea_0.py  (error=5.172654e+01)
+Task 17: variant_06_idea_0.py  (error=2.364180e+01)
+Task 18: variant_02_idea_0.py  (error=1.083295e+01)
+Task 19: variant_06_idea_0.py  (error=1.074706e+01)
+Task 20: variant_04_idea_0.py  (error=1.697590e+01)
+Task 21: variant_02_idea_0.py  (error=4.320969e+00)
+Task 22: original.py  (error=3.734344e+00)
+Task 23: variant_08_idea_0.py  (error=1.617879e+01)
+
+WIN COUNTS:
+  variant_09_idea_0.py: 9 wins
+  variant_04_idea_0.py: 5 wins
+  variant_06_idea_0.py: 4 wins
+  original.py: 2 wins
+  variant_08_idea_0.py: 2 wins
+  variant_02_idea_0.py: 2 wins
+
+WINNING VARIANT IMPLEMENTATIONS:
+# --- From variant_02_idea_0.py (2 wins) ---
+```python
+def _compute_diversity(self):
+        """Compute diversity using average pairwise Euclidean distance in decision space.
+
+        Directly measures spatial spread of population rather than relying on
+        covariance matrix statistics. This catches population collapse that
+        eigenvalue-based metrics miss on ill-conditioned problems.
+
+        Diversity = log(1 + mean_pairwise_dist / expected_dist)
+          where expected_dist is the mean distance in a uniformly distributed population
+
+        Log scaling provides sensitivity across orders of magnitude while avoiding
+        numerical instability when distances are very small.
+        """
+        if len(self.population) < 2:
+            return 1e-15
+
+        # Compute all pairwise Euclidean distances
+        pop = self.population.reshape(len(self.population), -1)
+        diffs = pop[:, np.newaxis, :] - pop[np.newaxis, :, :]
+        pairwise_dists = np.sqrt(np.sum(diffs ** 2, axis=2))
+
+        # Exclude diagonal (self-distances)
+        n = len(self.population)
+        mask = np.triu(np.ones((n, n), dtype=bool), k=1)
+        mean_pairwise_dist = np.mean(pairwise_dists[mask])
+
+        # Normalize by search space diameter
+        search_space_diameter = np.sqrt(self.dim) * (self.ub[0] - self.lb[0])
+        expected_dist = search_space_diameter / np.sqrt(2.0)
+
+        # Ratio with protection against division by zero
+        dist_ratio = mean_pairwise_dist / max(expected_dist, 1e-10)
+
+        # Log-scaled diversity for numerical stability across scales
+        diversity = np.log1p(dist_ratio)
+
+        return float(np.clip(diversity, 1e-15, None))
+```
+
+# --- From variant_04_idea_0.py (5 wins) ---
+```python
+def _compute_diversity(self):
+        """Compute diversity using hybrid fitness variance, condition number, and spread.
+
+        Unlike the eigenvalue-based ESS approach, this combines:
+        1. Fitness variance (relative) — detects population collapse into local optima
+        2. Condition number penalty — detects elongated covariance (narrow ridges)
+        3. Actual population spread — measures true geometric extent
+
+        This directly addresses the failure mode seen in tasks 17, 16, 23, etc.
+        where error > 1e+01 implies the population is trapped in a local optimum
+        with low fitness diversity and/or highly elongated covariance.
+        """
+        # 1. Fitness variance component: detects local optima trapping
+        # Low fitness variance = everyone stuck at same fitness = bad
+        fit_var = np.var(self.fitness)
+        fit_scale = max(abs(self.f_opt), 1.0)
+        rel_var = fit_var / (fit_scale ** 2 + 1e-10)
+        rel_var = float(np.clip(rel_var, 1e-10, 1.0))
+        fitness_component = np.sqrt(rel_var)
+
+        # 2. Condition number penalty: detects elongated covariance
+        # High condition number = narrow ridge = CMA losing rank = bad
+        eigvals = np.linalg.eigvalsh(self.C)
+        eigvals = np.clip(eigvals, 1e-15, None)
+        eig_min = float(np.min(eigvals))
+        eig_max = float(np.max(eigvals))
+        cond = eig_max / max(eig_min, 1e-15)
+        # Penalize high condition number; log-scale for numerical stability
+        cond_penalty = 1.0 / np.log1p(cond)
+        cond_penalty = float(np.clip(cond_penalty, 1e-10, 1.0))
+
+        # 3. Population spread: actual geometric extent
+        pop_variance = np.mean(np.var(self.population, axis=0))
+        expected_var = ((self.ub[0] - self.lb[0]) / 6.0) ** 2
+        spread = pop_variance / max(expected_var, 1e-10)
+        spread = float(np.clip(spread, 1e-10, 1.0))
+
+        # Combine with geometric mean (all factors must be decent)
+        diversity = (fitness_component * cond_penalty * spread) ** (1.0 / 3.0)
+        return float(np.clip(diversity, 1e-15, None))
+```
+
+# --- From variant_06_idea_0.py (4 wins) ---
+```python
+def _compute_diversity(self):
+            """Compute diversity using direct population metrics.
+
+            Combines three complementary measures:
+            1. Normalized mean pairwise distance (actual spatial spread)
+            2. Relative fitness variance (selection pressure indicator)
+            3. Solution-space coverage ratio (bound utilization)
+
+            This avoids reliance on covariance matrix eigenvalues which become
+            unreliable when the algorithm struggles on difficult tasks.
+            """
+            # 1. Spatial spread: mean pairwise Euclidean distance
+            pop = self.population[:len(self.fitness)]
+            n = len(pop)
+            if n < 2:
+                return 1e-15
+
+            # Sample subset for efficiency (O(n^2) is too slow for large populations)
+            sample_size = min(50, n)
+            indices = np.random.choice(n, sample_size, replace=False)
+            pop_sample = pop[indices]
+
+            pairwise_dists = []
+            for i in range(sample_size):
+                diffs = pop_sample - pop_sample[i]
+                dists = np.sqrt(np.sum(diffs ** 2, axis=1))
+                pairwise_dists.extend(dists[i + 1:])
+
+            mean_pairwise_dist = np.mean(pairwise_dists) if pairwise_dists else 0.0
+            max_possible_dist = np.sqrt(self.dim) * (self.ub[0] - self.lb[0])
+            spatial_spread = mean_pairwise_dist / max(max_possible_dist, 1e-10)
+            spatial_spread = np.clip(spatial_spread, 0.0, 1.0)
+
+            # 2. Fitness diversity: relative variance
+            fit_arr = np.asarray(self.fitness).flatten()
+            fit_var = np.var(fit_arr)
+            fit_range = np.ptp(fit_arr) + 1e-10
+            fit_scale = max(abs(self.f_opt), 1.0, fit_range)
+            fitness_diversity = np.clip(fit_var / (fit_scale ** 2 + 1e-10), 0.0, 1.0)
+
+            # 3. Coverage: ratio of population span to search space
+            pop_min = np.min(pop, axis=0)
+            pop_max = np.max(pop, axis=0)
+            span = pop_max - pop_min
+            search_span = self.ub - self.lb
+            coverage = np.mean(span / np.maximum(search_span, 1e-10))
+            coverage = np.clip(coverage, 0.0, 1.0)
+
+            # Combine with adaptive weighting
+            diversity = (0.5 * spatial_spread + 0.3 * fitness_diversity + 0.2 * coverage)
+            return float(np.clip(diversity, 1e-15, None))
+```
+
+# --- From variant_08_idea_0.py (2 wins) ---
+```python
+def _compute_diversity(self):
+        """Compute diversity using pairwise distances in population space.
+
+        Directly measures spatial distribution of population via mean/median
+        Euclidean distances between individuals. Normalized by search space
+        diameter gives scale-invariant metric that detects:
+          - Population collapse (all individuals clustered)
+          - Deceptive local optima trapping (clustering away from global optimum)
+          - Loss of exploration (low pairwise distances)
+        """
+        # Pairwise distance computation (vectorized for efficiency)
+        # Compute all pairwise squared distances: ||x_i - x_j||^2
+        pop = self.population[:len(self.fitness)]
+        n = len(pop)
+
+        if n < 2:
+            return float(1e-15)
+
+        # Use broadcasting: sq_dists[i,j] = ||pop[i] - pop[j]||^2
+        # Shape: (n, n)
+        sq_dists = np.sum((pop[:, np.newaxis, :] - pop[np.newaxis, :, :]) ** 2, axis=2)
+
+        # Extract upper triangle (excluding diagonal) for unique pairs
+        upper_tri_indices = np.triu_indices(n, k=1)
+        pairwise_sq_dists = sq_dists[upper_tri_indices]
+
+        if len(pairwise_sq_dists) == 0:
+            return float(1e-15)
+
+        # Statistics of pairwise distances
+        mean_sq_dist = np.mean(pairwise_sq_dists)
+        median_sq_dist = np.median(pairwise_sq_dists)
+
+        # Avoid sqrt of large arrays when possible
+        mean_dist = np.sqrt(mean_sq_dist)
+        median_dist = np.sqrt(median_sq_dist)
+
+        # Normalize by search space diameter
+        search_diameter = np.sqrt(self.dim) * (self.ub[0] - self.lb[0])
+        expected_dist = search_diameter / np.sqrt(2.0)  # Expected distance in uniform cube
+
+        # Normalized metrics (0 to 1 range)
+        mean_dist_norm = mean_dist / max(expected_dist, 1e-10)
+        median_dist_norm = median_dist / max(expected_dist, 1e-10)
+
+        # Also compute distance from population to best solution found
+        # Low distance means population is converging toward (possibly local) optimum
+        dists_to_best = np.sqrt(np.sum((pop - self.x_opt) ** 2, axis=1))
+        mean_dist_to_best = np.mean(dists_to_best)
+        std_dist_to_best = np.std(dists_to_best)
+
+        # Diversity is high when population is spread AND not all clustered at best
+        # Penalize if all individuals are close to the current best (possible trap)
+        clustering_factor = mean_dist_to_best / max(expected_dist, 1e-10)
+        clustering_penalty = np.clip(clustering_factor, 0.0, 1.0)
+
+        # Combine metrics: geometric mean of spread and inverse-clustering
+        spread_metric = (mean_dist_norm + median_dist_norm) / 2.0
+        spread_metric = np.clip(spread_metric, 1e-15, 1.0)
+
+        # Final diversity: geometric mean balances spread and avoids clustering
+        diversity = spread_metric * np.sqrt(1.0 - 0.5 * clustering_penalty)
+
+        return float(np.clip(diversity, 1e-15, None))
+```
+
+# --- From variant_09_idea_0.py (9 wins) ---
+```python
+def _compute_diversity(self):
+        """Compute diversity using percentile-robust and condition-aware metrics.
+
+        Key differences from ESS-based approach:
+        - Uses MAX-normalized spread (catches catastrophic collapse better)
+        - Uses fitness percentile range (detects local optima trapping)
+        - Uses condition number directly (detects rank deficiency)
+        - Uses population spread ratio (detects severe elongation)
+
+        This makes the metric more sensitive to extreme states that cause
+        catastrophic failure on multimodal/ill-conditioned tasks.
+        """
+        # Max-normalized spread: captures catastrophic collapse better than trace
+        pop_diffs = self.population - self.mean
+        max_sq_dist = np.max(np.sum(pop_diffs ** 2, axis=1))
+        expected_max_sq = self.dim * ((self.ub[0] - self.lb[0]) / 3.0) ** 2
+        spread_norm = np.sqrt(max_sq_dist) / np.sqrt(max(expected_max_sq, 1e-10))
+        spread_norm = np.clip(spread_norm, 0.0, 2.0)
+
+        # Fitness percentile range: detects local optima trapping
+        sorted_fit = np.sort(self.fitness)
+        fit_range = sorted_fit[-1] - sorted_fit[0]
+        fit_median = sorted_fit[len(sorted_fit) // 2]
+        fit_p10 = sorted_fit[max(0, len(sorted_fit) // 10 - 1)]
+        fit_percentile_range = (fit_median - fit_p10) / (abs(fit_median) + abs(fit_p10) + 1e-10)
+        fit_percentile_range = np.clip(fit_percentile_range, 0.0, 1.0)
+
+        # Condition number: directly detects rank deficiency
+        eigvals = np.linalg.eigvalsh(self.C)
+        eigvals = np.clip(eigvals, 1e-15, None)
+        eig_min = np.min(eigvals)
+        eig_max = np.max(eigvals)
+        cond = eig_max / max(eig_min, 1e-15)
+        cond_norm = 1.0 / np.log1p(cond)
+        cond_norm = np.clip(cond_norm, 0.0, 1.0)
+
+        # Spread ratio: detects severe elongation (ratio of max to min axis lengths)
+        diag = np.diag(self.C)
+        diag = np.maximum(diag, 1e-15)
+        max_var = np.max(diag)
+        min_var = np.min(diag)
+        spread_ratio = min_var / max_var
+        spread_ratio = np.clip(spread_ratio, 0.0, 1.0)
+
+        # Weighted combination: emphasize condition and spread ratio for ill-conditioned tasks
+        diversity = (
+            0.25 * spread_norm +
+            0.35 * fit_percentile_range +
+            0.25 * cond_norm +
+            0.15 * spread_ratio
+        )
+
+        return float(np.clip(diversity, 1e-15, None))
+```
+
+Requirements:
+- Respond with the COMPLETE class code inside a single ```python``` block
+- Include `import numpy as np` at the top
+- Use an adaptive mechanism (Thompson Sampling, Multi-Armed Bandit, or sliding window credit assignment) to learn which operator works best during a run
+- You may add new attributes in __init__ and new private helper methods
+- Do NOT change signatures of existing public methods (__call__, crossover, mutation, selection, etc.)
+- The class MUST be callable as: `obj(func, stopping_condition)` → (f_opt, x_opt)
+- Handle ALL edge cases: no -inf, no crashes, no NaN, clip to bounds
+- Use integer-index-based operator tracking (not id()-based)
+- Cast all reward/fitness values to float scalars before storing
+
+Original algorithm:
+```python
+import numpy as np
+
+
+class AdaptiveCovarianceEvolutionStrategy:
+    """
+    Adaptive optimizer that automatically selects the best covariance adaptation
+    strategy during optimization using Thompson Sampling with sliding window credit assignment.
+    
+    Features:
+    - 5 covariance adaptation strategies (original + 4 variants)
+    - Thompson Sampling for operator selection
+    - Sliding window credit assignment
+    - Automatic restart on stagnation
+    """
+    
+    def __init__(self, dim, *args, **kwargs):
+        self.dim = dim
+        self.NP = min(240, max(80, 8 * dim))
+        self.bounds = (-100.0, 100.0)
+        self.lb = np.full(dim, -100.0)
+        self.ub = np.full(dim, 100.0)
+        
+        # CMA-ES inspired parameters
+        self.mu = self.NP // 4
+        self.weights = np.log(self.mu + 0.5) - np.log(np.arange(1, self.mu + 1))
+        self.weights /= np.sum(self.weights)
+        self.mueff = 1.0 / np.sum(self.weights ** 2)
+        
+        # Learning rates
+        self.cs = (self.mueff + 2.0) / (self.dim + self.mueff + 5.0)
+        self.cc = (4.0 + self.mueff / self.dim) / (self.dim + 4.0 + 2.0 * self.mueff / self.dim)
+        self.ccov = (1.0 / self.mueff) * (2.0 / (self.dim + 1.41) ** 2) + \
+                    (1.0 - 1.0 / self.mueff) * (2.0 * self.cc - 1.0 / self.mueff)
+        self.damping = 1.0 + np.maximum(0.0, np.sqrt(self.mueff) - 1.0)
+        
+        # Restart parameters
+        self.max_stagnation = 50 + self.dim * 3
+        self.min_diversity = 1e-6 * (self.ub[0] - self.lb[0])
+        
+        # Adaptive operator selection parameters
+        self.num_operators = 5
+        self.operator_names = ['original', 'variant_01', 'variant_06', 'variant_08', 'variant_09']
+        
+        # Thompson Sampling with Beta distributions
+        self.alpha = np.ones(self.num_operators)
+        self.beta = np.ones(self.num_operators)
+        
+        # Sliding window for credit assignment
+        self.reward_window_size = 10
+        self.operator_rewards = {i: [] for i in range(self.num_operators)}
+        self.operator_counts = np.zeros(self.num_operators)
+        self.selection_counts = np.zeros(self.num_operators)
+        
+        # Runtime state
+        self.generation = 0
+        self.current_operator = 0
+        self.L = None
+    
+    def _clip_to_bounds(self, x):
+        """Clip solution to bounds."""
+        return np.clip(x, self.lb, self.ub)
+    
+    def _ensure_positive_definite(self, C):
+        """Ensure matrix is symmetric and positive definite."""
+        C = 0.5 * (C + C.T)
+        min_eig = np.min(np.linalg.eigvalsh(C))
+        if min_eig < 1e-10:
+            C += (1e-7 - min_eig) * np.eye(self.dim)
+        return C
+    
+    def __call__(self, func, stopping_condition):
+        self.func = func
+        self._initialize_population()
+        
+        while not stopping_condition():
+            self._sample_trials_batch()
+            
+            if stopping_condition():
+                break
+                
+            self._evaluate_batch()
+            
+            if len(self.trial_fitness) < len(self.trials):
+                self.trials = self.trials[:len(self.trial_fitness)]
+                
+            if len(self.trial_fitness) < self.NP:
+                break
+                
+            self._update_best()
+            
+            if stopping_condition():
+                break
+                
+            self._select_survivors_batch()
+            self._adapt_step_size()
+            
+            # Select and apply covariance adaptation operator
+            self._select_operator_thompson()
+            self._adapt_covariance()
+            
+            # Update operator rewards based on improvement
+            self._update_operator_rewards()
+            
+            self._check_stagnation()
+            self._restart_if_needed()
+        
+        return self.f_opt, self.x_opt
+    
+    def _initialize_population(self):
+        """Initialize population using Sobol quasi-random sequences."""
+        # Generate Sobol sequence samples (quasi-random, low-discrepancy)
+        # Falls back to stratified sampling if Sobol unavailable
+        try:
+            from scipy.stats import qmc
+            sampler = qmc.Sobol(self.dim, scramble=True)
+            samples = sampler.random(self.NP)
+            # Map from [0,1]^dim to [lb, ub]
+            samples = qmc.scale(samples, self.lb, self.ub)
+        except Exception:
+            # Fallback: stratified sampling with jitter
+            samples = np.zeros((self.NP, self.dim))
+            for d in range(self.dim):
+                bins = np.linspace(self.lb[d], self.ub[d], self.NP + 1)
+                bin_width = bins[1] - bins[0]
+                samples[:, d] = bins[:-1] + np.random.random(self.NP) * bin_width
+            # Shuffle each dimension independently
+            for d in range(self.dim):
+                samples[:, d] = samples[np.random.permutation(self.NP), d]
+
+        self.population = samples
+        self.mean = np.mean(self.population, axis=0)
+        self.old_mean = self.mean.copy()
+
+        self.C = np.cov(self.population.T) + 1e-8 * np.eye(self.dim)
+        self.sigma = np.mean(np.std(self.population, axis=0))
+        self.ps = np.zeros(self.dim)
+        self.pc = np.zeros(self.dim)
+
+        self.fitness = self.func(self.population)
+
+        best_idx = np.argmin(self.fitness)
+        self.f_opt = float(np.asarray(self.fitness[best_idx]).flatten()[0])
+        self.x_opt = self.population[best_idx].copy()
+        self.f_opt_prev = self.f_opt
+
+        self.stagnation_counter = 0
+        self.generation = 0
+        self.current_operator = 0
+
+        self._reset_operator_state()
+    
+    def _reset_operator_state(self):
+        """Reset all operator-specific state variables."""
+        self.L = None
+        if hasattr(self, 'pc_weighted'):
+            self.pc_weighted = np.zeros(self.dim)
+        if hasattr(self, 'p_cross'):
+            self.p_cross = np.zeros(self.dim)
+        if hasattr(self, 'prev_y_mean'):
+            delattr(self, 'prev_y_mean')
+        if hasattr(self, 'prev_f_opt'):
+            self.prev_f_opt = self.f_opt
+            self.improvement_ema = 1.0
+    
+    def _sample_trials_batch(self):
+        """Sample new trial population using Cholesky decomposition."""
+        # Ensure positive definiteness before Cholesky
+        min_eig = np.min(np.linalg.eigvalsh(self.C))
+        if min_eig < 1e-8:
+            self.C += (1e-7 - min_eig) * np.eye(self.dim)
+
+        # Compute Cholesky factor L where C = L @ L.T
+        # More efficient than eigendecomposition for sampling
+        try:
+            L = np.linalg.cholesky(self.C)
+        except np.linalg.LinAlgError:
+            # Fallback: use diagonal approximation
+            diag_C = np.diag(self.C)
+            diag_C = np.maximum(diag_C, 1e-10)
+            L = np.diag(np.sqrt(diag_C))
+
+        # Sample from standard normal and transform
+        z = np.random.randn(self.NP, self.dim)
+        self.trials = self.mean + self.sigma * (z @ L.T)
+
+        # Clip to bounds
+        self.trials = self._clip_to_bounds(self.trials)
+    
+    def _evaluate_batch(self):
+        """Evaluate all trial candidates in single batch call."""
+        self.trial_fitness = self.func(self.trials)
+    
+    def _update_best(self):
+        """Update best solution if trial population contains improvement."""
+        trial_best_idx = np.argmin(self.trial_fitness)
+        trial_best_fit = float(np.asarray(self.trial_fitness[trial_best_idx]).flatten()[0])
+        if trial_best_fit < self.f_opt:
+            self.f_opt = trial_best_fit
+            self.x_opt = self.trials[trial_best_idx].copy()
+    
+    def _select_survivors_batch(self):
+        """Select survivors via elitist (mu, lambda)-selection."""
+        combined_pop = np.vstack([self.population, self.trials])
+        combined_fit = np.concatenate([self.fitness, self.trial_fitness])
+        
+        sorted_indices = np.argsort(combined_fit)
+        self.population = combined_pop[sorted_indices[:self.NP]]
+        self.fitness = combined_fit[sorted_indices[:self.NP]]
+        
+        self.old_mean = self.mean.copy()
+        self.mean = np.mean(self.population, axis=0)
+        self.generation += 1
+    
+    def _adapt_step_size(self):
+        """Adapt step-size using momentum-enhanced improvement tracking with diversity-based damping."""
+        recent_improved = 0
+        recent_total = 0
+        total_improvement = 0.0
+
+        for i in range(self.NP):
+            if i < len(self.trial_fitness) and i < len(self.fitness):
+                if self.trial_fitness[i] < self.fitness[i]:
+                    recent_improved += 1
+                    diff = self.fitness[i] - self.trial_fitness[i]
+                    total_improvement += max(diff, 0.0)
+                recent_total += 1
+
+        if recent_total == 0:
+            recent_total = max(1, self.NP // 4)
+
+        success_rate = recent_improved / recent_total
+        success_rate = np.clip(success_rate, 0.0, 1.0)
+
+        avg_improvement = total_improvement / max(recent_improved, 1)
+        improvement_magnitude = np.log1p(max(avg_improvement, 1e-15))
+
+        if not hasattr(self, 'improvement_ema'):
+            self.improvement_ema = improvement_magnitude
+        self.improvement_ema = 0.7 * self.improvement_ema + 0.3 * improvement_magnitude
+
+        target_rate = 0.25
+        adaptation = (success_rate - target_rate) / target_rate
+        adaptation += 0.3 * np.tanh(self.improvement_ema - 1.0)
+        adaptation = np.clip(adaptation, -0.8, 0.8)
+
+        pop_variance = np.mean(np.var(self.population, axis=0))
+        expected_var = ((self.ub[0] - self.lb[0]) / 6.0) ** 2
+        diversity = np.clip(pop_variance / (expected_var + 1e-10), 0.0, 1.0)
+
+        diversity_boost = 1.0 + 2.0 * (1.0 - diversity)
+        diversity_boost = np.clip(diversity_boost, 0.5, 3.0)
+
+        damping_adaptive = self.damping * (0.5 + 0.5 * np.log1p(self.dim)) / diversity_boost
+        damping_adaptive = np.clip(damping_adaptive, 0.05, 200.0)
+
+        self.sigma *= np.exp(adaptation * self.cs / damping_adaptive)
+        self.sigma = np.clip(self.sigma, 1e-10, 10.0)
+    
+    def _select_operator_thompson(self):
+        """Select operator using Thompson Sampling from Beta distributions."""
+        samples = np.random.beta(self.alpha, self.beta)
+        self.current_operator = int(np.argmax(samples))
+        self.operator_counts[self.current_operator] += 1
+        return self.current_operator
+    
+    def _update_operator_rewards(self):
+        """Credit assignment via exponentially-weighted cumulative improvement with stagnation awareness."""
+        improvement = max(0.0, self.f_opt_prev - self.f_opt)
+
+        # Initialize cumulative tracking if needed
+        if not hasattr(self, 'operator_cumulative_reward'):
+            self.operator_cumulative_reward = np.zeros(self.num_operators)
+        if not hasattr(self, 'operator_decay_sum'):
+            self.operator_decay_sum = np.zeros(self.num_operators)
+
+        # Apply exponential decay to accumulated reward (recent rewards weighted more)
+        decay = 0.95
+        self.operator_cumulative_reward *= decay
+        self.operator_decay_sum *= decay
+
+        # Log-scaled improvement reward (more sensitive to small improvements)
+        if improvement > 0:
+            reward = float(np.log1p(improvement * 1e10) / 10.0)
+        else:
+            reward = 0.0
+
+        # Explicit stagnation detection
+        is_stagnant = self.stagnation_counter > self.max_stagnation // 2
+
+        # Diversity metric
+        pop_variance = np.mean(np.var(self.population, axis=0))
+        expected_var = ((self.ub[0] - self.lb[0]) / 6.0) ** 2
+        diversity = np.clip(pop_variance / (expected_var + 1e-10), 0.0, 1.0)
+
+        # Exploration bonus when stagnant and diversity is low
+        if is_stagnant and diversity < 0.1:
+            reward *= 2.0
+
+        # Update cumulative weighted reward
+        self.operator_cumulative_reward[self.current_operator] += reward
+        self.operator_decay_sum[self.current_operator] += 1.0
+
+        # Normalize by decay sum to get comparable reward values
+        norm = max(self.operator_decay_sum[self.current_operator], 1.0)
+        normalized_reward = self.operator_cumulative_reward[self.current_operator] / norm
+        normalized_reward = float(np.clip(normalized_reward, -10.0, 10.0))
+
+        op = self.current_operator
+        self.operator_rewards[op].append(normalized_reward)
+
+        if len(self.operator_rewards[op]) > self.reward_window_size:
+            self.operator_rewards[op].pop(0)
+
+        n = len(self.operator_rewards[op])
+        if n >= 3:
+            mean_reward = float(np.mean(self.operator_rewards[op]))
+            var_reward = float(np.var(self.operator_rewards[op]))
+            denom = max(var_reward * n + 1e-10, 1e-10)
+            self.alpha[op] = float(max(1.0, mean_reward * (mean_reward * (n - 1) / denom + 1)))
+            self.beta[op] = float(max(1.0, (1 - mean_reward) * ((n - 1) * (1 - mean_reward) / denom + 1)))
+        elif n >= 1:
+            sum_reward = float(np.sum(self.operator_rewards[op]))
+            if sum_reward > 0:
+                self.alpha[op] = 1.0 + sum_reward
+            else:
+                self.beta[op] = 1.0 - sum_reward
+    
+    def _adapt_covariance(self):
+        """Dispatch to the selected covariance adaptation strategy."""
+        if self.current_operator == 0:
+            self._adapt_covariance_original()
+        elif self.current_operator == 1:
+            self._adapt_covariance_variant_01()
+        elif self.current_operator == 2:
+            self._adapt_covariance_variant_06()
+        elif self.current_operator == 3:
+            self._adapt_covariance_variant_08()
+        else:
+            self._adapt_covariance_variant_09()
+    
+    def _adapt_covariance_original(self):
+        """Original covariance adaptation (baseline)."""
+        y_mean = (self.mean - self.old_mean) / self.sigma
+        self.pc = (1.0 - self.cc) * self.pc + np.sqrt(self.cc * (2.0 - self.cc)) * y_mean
+        
+        rank_one = np.outer(self.pc, self.pc)
+        
+        rank_mu = np.zeros((self.dim, self.dim))
+        for i in range(self.mu):
+            diff = (self.population[i] - self.old_mean) / self.sigma
+            rank_mu += self.weights[i] * np.outer(diff, diff)
+        
+        self.C = ((1.0 - self.ccov) * self.C + 
+                  self.ccov * (rank_one + (1.0 - 1.0 / self.mueff) * self.ccov * 2.0 * rank_mu))
+        
+        self.C = self._ensure_positive_definite(self.C)
+    
+    def _adapt_covariance_variant_01(self):
+        """Archive-guided covariance perturbation for escaping deceptive local optima."""
+        y_mean = (self.mean - self.old_mean) / self.sigma
+
+        # Initialize archive for tracking distinct best solutions
+        if not hasattr(self, 'archive_positions'):
+            self.archive_positions = []
+            self.archive_fitness = []
+            self.archive_generations = []
+
+        # Add current best to archive if distinct enough
+        min_dist_threshold = 1e-3 * (self.ub[0] - self.lb[0])
+        is_distinct = True
+        for arch_pos in self.archive_positions:
+            dist = np.linalg.norm(self.x_opt - arch_pos)
+            if dist < min_dist_threshold:
+                is_distinct = False
+                break
+
+        if is_distinct and len(self.archive_positions) < 10:
+            self.archive_positions.append(self.x_opt.copy())
+            self.archive_fitness.append(self.f_opt)
+            self.archive_generations.append(self.generation)
+        elif is_distinct and len(self.archive_positions) >= 10:
+            # Replace worst entry
+            worst_idx = np.argmax(self.archive_fitness)
+            self.archive_positions[worst_idx] = self.x_opt.copy()
+            self.archive_fitness[worst_idx] = self.f_opt
+            self.archive_generations[worst_idx] = self.generation
+
+        # Compute diversity and condition metrics
+        fit_var = np.var(self.fitness)
+        fit_scale = max(abs(self.f_opt), 1.0)
+        rel_var = fit_var / (fit_scale ** 2 + 1e-10)
+
+        eigvals = np.linalg.eigvalsh(self.C)
+        eig_min = np.min(eigvals)
+        eig_max = np.max(eigvals)
+        eig_spread = eig_min / (eig_max + 1e-10)
+        cond = eig_max / (max(eig_min, 1e-10))
+
+        # Detect trapping: low variance OR ill-conditioned OR collapsed spectrum
+        is_trapped = (rel_var < 1e-3) or (cond > 1e5) or (eig_spread < 1e-5)
+
+        # Compute archive-based escape direction
+        escape_perturb = np.zeros((self.dim, self.dim))
+        if is_trapped and len(self.archive_positions) >= 3:
+            # Direction from mean toward archive centroid, weighted by diversity
+            centroid = np.mean(self.archive_positions, axis=0)
+            toward_centroid = centroid - self.mean
+            norm_toward = np.linalg.norm(toward_centroid)
+            if norm_toward > 1e-10:
+                toward_centroid /= norm_toward
+                # Also consider directions to individual archive members
+                for arch_pos in self.archive_positions:
+                    dir_to_arch = arch_pos - self.mean
+                    norm_dir = np.linalg.norm(dir_to_arch)
+                    if norm_dir > 1e-10:
+                        dir_to_arch /= norm_dir
+                        # Perturb along diverse directions
+                        escape_perturb += 0.3 * np.outer(dir_to_arch, dir_to_arch)
+            # Add global exploration along principal axes
+            escape_perturb += 0.1 * np.eye(self.dim)
+
+        # Adaptive learning rates with exploration boost when trapped
+        if is_trapped:
+            ccov_scale = 0.8
+            cc_scale = 0.8
+        else:
+            ccov_scale = min(1.0, 0.2 + 2.0 * rel_var)
+            cc_scale = 1.0
+
+        ccov_1 = ccov_scale * 1.0 / (self.dim + 2.0)
+        ccov_mu = ccov_scale * self.mueff / (self.dim + 2.0) / (self.dim + 4.0)
+        cc_adapt = cc_scale * (4.0 + self.mueff / self.dim) / (self.dim + 4.0 + 2.0 * self.mueff / self.dim)
+
+        # Evolution path update
+        self.pc = (1.0 - cc_adapt) * self.pc + np.sqrt(cc_adapt * (2.0 - cc_adapt)) * y_mean
+
+        # Rank-one update
+        rank_one = np.outer(self.pc, self.pc)
+
+        # Rank-mu update
+        rank_mu = np.zeros((self.dim, self.dim))
+        for i in range(self.mu):
+            diff = (self.population[i] - self.old_mean) / self.sigma
+            rank_mu += self.weights[i] * np.outer(diff, diff)
+
+        # Combine updates with archive-based perturbation
+        self.C = ((1.0 - ccov_1 - ccov_mu) * self.C +
+                  ccov_1 * rank_one +
+                  ccov_mu * rank_mu)
+
+        # Inject escape perturbation when trapped
+        if is_trapped and len(self.archive_positions) >= 3:
+            self.C = self.C + escape_perturb
+
+        self.C = self._ensure_positive_definite(self.C)
+
+        # Full restart on extreme ill-conditioning
+        if cond > 1e8 or eig_spread < 1e-8:
+            self.C = np.eye(self.dim) * np.mean(eigvals)
+            self.pc = np.zeros(self.dim)
+            self.L = None
+    
+    def _adapt_covariance_variant_06(self):
+        """Diversity-sensitive learning rate scaling."""
+        y_mean = (self.mean - self.old_mean) / self.sigma
+        self.pc = (1.0 - self.cc) * self.pc + np.sqrt(self.cc * (2.0 - self.cc)) * y_mean
+        
+        rank_one = np.outer(self.pc, self.pc)
+        
+        fit_var = np.var(self.fitness)
+        fit_scale = max(abs(self.f_opt), 1.0)
+        rel_var = fit_var / (fit_scale ** 2 + 1e-10)
+        
+        eigvals = np.linalg.eigvalsh(self.C)
+        eig_spread = np.min(eigvals) / (np.max(eigvals) + 1e-10)
+        
+        is_converging = (rel_var < 0.01) and (eig_spread < 1e-4)
+        
+        if is_converging:
+            scale = 10.0
+        else:
+            scale = 1.0 + 5.0 * min(rel_var, 0.1)
+        
+        ccov_scaled = min(self.ccov * scale, 0.5)
+        cc_scaled = min(self.cc * (1.0 + scale * 0.5), 0.3)
+        
+        self.pc = (1.0 - cc_scaled) * self.pc + np.sqrt(cc_scaled * (2.0 - cc_scaled)) * y_mean
+        rank_one = np.outer(self.pc, self.pc)
+        
+        rank_mu = np.zeros((self.dim, self.dim))
+        for i in range(self.mu):
+            diff = (self.population[i] - self.old_mean) / self.sigma
+            rank_mu += self.weights[i] * np.outer(diff, diff)
+        
+        self.C = ((1.0 - ccov_scaled) * self.C + 
+                  ccov_scaled * (rank_one + (1.0 - 1.0 / self.mueff) * ccov_scaled * 2.0 * rank_mu))
+        
+        if is_converging:
+            self.C += 0.05 * np.eye(self.dim)
+        
+        self.C = self._ensure_positive_definite(self.C)
+    
+    def _adapt_covariance_variant_08(self):
+        """Active CMA-ES: Reduce learning rate along unfavorable eigendirections."""
+        y_mean = (self.mean - self.old_mean) / self.sigma
+
+        # Evolution path update (unchanged)
+        self.pc = (1.0 - self.cc) * self.pc + np.sqrt(self.cc * (2.0 - self.cc)) * y_mean
+
+        # Rank-one update
+        rank_one = np.outer(self.pc, self.pc)
+
+        # Rank-mu update with positive/negative decomposition
+        rank_mu_pos = np.zeros((self.dim, self.dim))
+        rank_mu_neg = np.zeros((self.dim, self.dim))
+
+        for i in range(self.mu):
+            diff = (self.population[i] - self.old_mean) / self.sigma
+            weight = self.weights[i]
+            outer = np.outer(diff, diff)
+
+            if weight > 0:
+                rank_mu_pos += weight * outer
+            else:
+                rank_mu_neg += abs(weight) * outer
+
+        # Normalize by sum of positive and negative weights separately
+        pos_sum = max(np.sum(self.weights[:self.mu][self.weights[:self.mu] > 0]), 1e-10)
+        neg_sum = max(np.sum(np.abs(self.weights[:self.mu][self.weights[:self.mu] < 0])), 1e-10)
+
+        rank_mu_pos /= pos_sum
+        rank_mu_neg /= neg_sum
+
+        # Combine positive and negative updates (active CMA-ES core)
+        self.C = ((1.0 - self.ccov) * self.C + 
+                  self.ccov * rank_one +
+                  (1.0 - 1.0 / self.mueff) * self.ccov * rank_mu_pos -
+                  self.ccov * 0.4 * rank_mu_neg)
+
+        self.C = self._ensure_positive_definite(self.C)
+    
+    def _adapt_covariance_variant_09(self):
+        """Exploration temperature with fitness gradient tracking for escaping local optima."""
+        if not hasattr(self, 'prev_f_opt'):
+            self.prev_f_opt = self.f_opt
+            self.exploration_temp = 1.0
+
+        delta_f_opt = self.prev_f_opt - self.f_opt
+        self.prev_f_opt = self.f_opt
+
+        fitness_gradient = max(abs(delta_f_opt), 1e-15)
+        temp_target = np.clip(1.0 / (1.0 + np.log1p(fitness_gradient * 1e5)), 0.05, 5.0)
+        self.exploration_temp = 0.95 * self.exploration_temp + 0.05 * temp_target
+
+        base_ccov = (1.0 / self.mueff) * (2.0 / (self.dim + 1.41) ** 2) + \
+                    (1.0 - 1.0 / self.mueff) * (2.0 * self.cc - 1.0 / self.mueff)
+        ccov_adaptive = base_ccov * self.exploration_temp
+        ccov_adaptive = np.clip(ccov_adaptive, 1e-10, 0.5)
+
+        cc_adaptive = self.cc * (1.0 / max(self.exploration_temp, 0.5))
+        cc_adaptive = np.clip(cc_adaptive, 0.01, 0.3)
+
+        y_mean = (self.mean - self.old_mean) / self.sigma
+        self.pc = (1.0 - cc_adaptive) * self.pc + np.sqrt(cc_adaptive * (2.0 - cc_adaptive)) * y_mean
+
+        rank_one = np.outer(self.pc, self.pc)
+
+        rank_mu = np.zeros((self.dim, self.dim))
+        total_w = 0.0
+        for i in range(self.mu):
+            diff = (self.population[i] - self.old_mean) / self.sigma
+            w = self.weights[i]
+            rank_mu += w * np.outer(diff, diff)
+            total_w += abs(w)
+
+        if total_w > 0:
+            rank_mu /= total_w
+
+        self.C = ((1.0 - ccov_adaptive) * self.C + 
+                  ccov_adaptive * rank_one + 
+                  (1.0 - 1.0 / self.mueff) * ccov_adaptive * 2.0 * rank_mu)
+
+        self.C = self._ensure_positive_definite(self.C)
+    
+    def _compute_diversity(self):
+        """Compute diversity using effective sample size of the covariance matrix.
+
+        Combines trace-based spread with eigenvalue-based shape penalty.
+        ESS = geometric_mean(eigenvalues) / arithmetic_mean(eigenvalues):
+          ~1.0 for spherical (good) → full diversity
+          ~0.0 for elongated (bad) → wasted dimensions
+
+        Diversity = normalized_trace * sqrt(ESS) penalizes both:
+          - Low overall spread (collapsed population)
+          - High elongation (narrow ridge, CMA-ES losing rank)
+        """
+        # Spread: normalized trace
+        diag = np.diag(self.C)
+        trace = np.sum(diag)
+        expected_trace = self.dim * ((self.ub[0] - self.lb[0]) / 6.0) ** 2
+        trace_norm = trace / max(expected_trace, 1e-10)
+
+        # Shape: effective sample size from eigenvalues
+        eigvals = np.linalg.eigvalsh(self.C)
+        eigvals = np.clip(eigvals, 1e-15, None)
+        geo_mean = np.exp(np.mean(np.log(eigvals)))
+        arith_mean = np.mean(eigvals)
+        ess = geo_mean / max(arith_mean, 1e-15)
+
+        # Combined metric
+        diversity = trace_norm * np.sqrt(ess)
+        return float(np.clip(diversity, 1e-15, None))
+    
+    def _check_stagnation(self):
+        """Track stagnation counter for restart logic."""
+        if self.f_opt < self.f_opt_prev - 1e-12:
+            self.stagnation_counter = 0
+        else:
+            self.stagnation_counter += 1
+        self.f_opt_prev = self.f_opt
+    
+    def _restart_if_needed(self):
+        """Restart population if stagnated or diversity lost."""
+        diversity = self._compute_diversity()
+        
+        if (self.stagnation_counter > self.max_stagnation or 
+            diversity < self.min_diversity or 
+            np.any(np.isnan(self.C))):
+            
+            best_idx = np.argmin(self.fitness)
+            elite = self.population[best_idx].copy()
+            elite_fit = self.fitness[best_idx]
+            
+            self._initialize_population()
+            
+            self.population[0] = elite
+            self.fitness[0] = elite_fit
+            self.f_opt = float(np.asarray(elite_fit).flatten()[0])
+            self.x_opt = elite.copy()
+            self.f_opt_prev = self.f_opt
+            self.stagnation_counter = 0
+
+```

@@ -1,0 +1,48 @@
+Experiment: cycle_0002__lineage_000__step3__restart_if_needed
+Timestamp: 2026-05-05T14:16:36.820339
+
+============================================================
+ALGORITHM RANKINGS (by geometric mean of finite positive tasks)
+============================================================
+
+   1. variant_05_catE_t13_idea_0.py            [variant   ]  geomean=6.552219e-02  (24/24 valid)
+   2. variant_01_catA_t11_idea_0.py            [variant   ]  geomean=8.168185e-02  (24/24 valid)
+   3. variant_07_catG_t17_idea_0.py            [variant   ]  geomean=1.233619e-01  (24/24 valid)
+   4. original.py                              [original  ]  geomean=1.387073e-01  (24/24 valid)
+   5. adaptive_attempt_3.py                    [adaptive  ]  geomean=3.491398e+02  (24/24 valid)
+   6. adaptive_attempt_1.py                    [adaptive  ]  geomean=4.076419e+02  (24/24 valid)
+
+============================================================
+PER-TASK BEST VARIANTS
+============================================================
+
+Task  0: SKIPPED (trivial)
+Task  1: variant_01_catA_t11_idea_0.py  (error=3.763255e-06)
+Task  2: SKIPPED (trivial)
+Task  3: variant_05_catE_t13_idea_0.py  (error=8.913524e-01)
+Task  4: SKIPPED (trivial)
+Task  5: original.py  (error=1.191883e-05)
+Task  6: variant_01_catA_t11_idea_0.py  (error=3.693391e+01)
+Task  7: variant_01_catA_t11_idea_0.py  (error=3.055361e-02)
+Task  8: original.py  (error=2.449280e-02)
+Task  9: variant_07_catG_t17_idea_0.py  (error=8.978418e+00)
+Task 10: original.py  (error=8.349811e-07)
+Task 11: variant_01_catA_t11_idea_0.py  (error=9.911677e+00)
+Task 12: variant_05_catE_t13_idea_0.py  (error=2.867873e-02)
+Task 13: variant_05_catE_t13_idea_0.py  (error=2.447322e+00)
+Task 14: variant_05_catE_t13_idea_0.py  (error=4.119018e+00)
+Task 15: variant_05_catE_t13_idea_0.py  (error=1.525717e+00)
+Task 16: original.py  (error=5.060266e+02)
+Task 17: variant_01_catA_t11_idea_0.py  (error=6.613991e+00)
+Task 18: variant_05_catE_t13_idea_0.py  (error=2.080426e+01)
+Task 19: variant_05_catE_t13_idea_0.py  (error=3.451484e+01)
+Task 20: variant_01_catA_t11_idea_0.py  (error=1.102824e+01)
+Task 21: variant_05_catE_t13_idea_0.py  (error=4.683036e+00)
+Task 22: variant_05_catE_t13_idea_0.py  (error=5.435498e+00)
+Task 23: variant_05_catE_t13_idea_0.py  (error=3.148115e+01)
+
+WIN COUNTS:
+  variant_05_catE_t13_idea_0.py: 10 wins
+  variant_01_catA_t11_idea_0.py: 6 wins
+  original.py: 4 wins
+  variant_07_catG_t17_idea_0.py: 1 wins

@@ -1,0 +1,15 @@
+{
+  "lineage_id": 1,
+  "plan": [
+    "_mutate_current_to_pbest_with_culture",
+    "_adapt_parameters_batch",
+    "_select_survivors_batch"
+  ],
+  "max_picks_per_method": 2,
+  "banned_methods": [],
+  "pick_counts": {
+    "_eval_wrapper": 1,
+    "_clip_to_bounds_batch": 1,
+    "_update_velocity_batch": 1
+  }
+}

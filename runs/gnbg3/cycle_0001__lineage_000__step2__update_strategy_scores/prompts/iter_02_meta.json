@@ -1,0 +1,14 @@
+{
+  "id": "B",
+  "name": "Spectral / linear-algebraic",
+  "iteration": 2,
+  "focus_task": 9,
+  "focus_mode": "phase1_random",
+  "history_best_value": 9.202649661256295,
+  "history_best_source": "variant_01_catA_t10_idea_0.py",
+  "history_best": {
+    "value": 9.202649661256295,
+    "source_algo": "variant_01_catA_t10_idea_0.py",
+    "source_dir": "runs\\gnbg3\\cycle_0001__lineage_000__step2__update_strategy_scores"
+  }
+}

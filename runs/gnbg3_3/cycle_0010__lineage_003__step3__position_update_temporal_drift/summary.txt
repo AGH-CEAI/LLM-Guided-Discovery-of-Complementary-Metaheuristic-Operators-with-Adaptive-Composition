@@ -1,0 +1,62 @@
+Experiment: cycle_0010__lineage_003__step3__position_update_temporal_drift
+Timestamp: 2026-05-03T01:58:27.575245
+
+============================================================
+ALGORITHM RANKINGS (by geometric mean of finite positive tasks)
+============================================================
+
+   1. variant_08_catH_idea_0.py                [variant   ]  geomean=2.291207e+01  (24/24 valid)
+   2. original.py                              [original  ]  geomean=2.379221e+01  (24/24 valid)
+   3. variant_10_catB_idea_0.py                [variant   ]  geomean=2.519322e+01  (24/24 valid)
+   4. variant_07_catG_idea_0.py                [variant   ]  geomean=2.525331e+01  (24/24 valid)
+   5. variant_01_catA_idea_0.py                [variant   ]  geomean=2.609008e+01  (24/24 valid)
+   6. variant_03_catC_idea_0.py                [variant   ]  geomean=2.647521e+01  (24/24 valid)
+   7. variant_04_catD_idea_0.py                [variant   ]  geomean=2.677455e+01  (24/24 valid)
+   8. variant_06_catF_idea_0.py                [variant   ]  geomean=2.699355e+01  (24/24 valid)
+   9. variant_02_catB_idea_0.py                [variant   ]  geomean=2.714259e+01  (24/24 valid)
+  10. variant_05_catE_idea_0.py                [variant   ]  geomean=2.831918e+01  (24/24 valid)
+  11. adaptive_attempt_1.py                    [adaptive  ]  geomean=5.683801e+01  (24/24 valid)
+  12. adaptive_attempt_2.py                    [adaptive  ]  geomean=6.492683e+01  (24/24 valid)
+  13. adaptive_attempt_3.py                    [adaptive  ]  geomean=1.893397e+02  (24/24 valid)
+
+FAILED ALGORITHMS:
+
+  - variant_09_catA_idea_0.py: A process in the process pool was terminated abruptly while the future was running or pending.
+
+============================================================
+PER-TASK BEST VARIANTS
+============================================================
+
+Task  0: original.py  (error=1.505145e-01)
+Task  1: variant_08_catH_idea_0.py  (error=2.513947e+00)
+Task  2: variant_08_catH_idea_0.py  (error=4.185369e-01)
+Task  3: variant_10_catB_idea_0.py  (error=6.472042e+00)
+Task  4: variant_10_catB_idea_0.py  (error=1.154683e+00)
+Task  5: variant_08_catH_idea_0.py  (error=1.956844e+01)
+Task  6: variant_04_catD_idea_0.py  (error=6.886570e+02)
+Task  7: variant_08_catH_idea_0.py  (error=1.075375e+01)
+Task  8: original.py  (error=2.828104e+00)
+Task  9: variant_01_catA_idea_0.py  (error=9.793100e+01)
+Task 10: variant_10_catB_idea_0.py  (error=1.588236e+01)
+Task 11: original.py  (error=1.651066e+02)
+Task 12: variant_06_catF_idea_0.py  (error=5.486124e+01)
+Task 13: original.py  (error=1.398979e+01)
+Task 14: original.py  (error=8.606972e+00)
+Task 15: original.py  (error=3.521978e+00)
+Task 16: variant_08_catH_idea_0.py  (error=1.139412e+03)
+Task 17: variant_04_catD_idea_0.py  (error=4.270925e+04)
+Task 18: original.py  (error=4.589434e+01)
+Task 19: original.py  (error=1.222706e+02)
+Task 20: variant_08_catH_idea_0.py  (error=2.377158e+01)
+Task 21: variant_05_catE_idea_0.py  (error=5.438520e+00)
+Task 22: original.py  (error=1.305462e+01)
+Task 23: variant_04_catD_idea_0.py  (error=6.741661e+01)
+
+WIN COUNTS:
+  original.py: 9 wins
+  variant_08_catH_idea_0.py: 6 wins
+  variant_10_catB_idea_0.py: 3 wins
+  variant_04_catD_idea_0.py: 3 wins
+  variant_01_catA_idea_0.py: 1 wins
+  variant_06_catF_idea_0.py: 1 wins
+  variant_05_catE_idea_0.py: 1 wins

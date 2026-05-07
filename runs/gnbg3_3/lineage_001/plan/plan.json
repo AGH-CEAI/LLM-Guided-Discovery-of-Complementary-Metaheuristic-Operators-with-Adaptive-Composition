@@ -1,0 +1,439 @@
+{
+  "lineage_id": 1,
+  "plan": [
+    "_position_update_batch",
+    "_velocity_update_variant_10_catB",
+    "_adapt_inertia_weight"
+  ],
+  "plan_roles": {
+    "_position_update_batch": "hot_path",
+    "_velocity_update_variant_10_catB": "control_flow",
+    "_adapt_inertia_weight": "leaf"
+  },
+  "max_picks_per_method": 2.0,
+  "weak_pick_cost": 0.5,
+  "rejected_pick_cost": 1.0,
+  "strong_improvement_ratio": 0.1,
+  "rejected_streak_cap": 3,
+  "banned_methods": [],
+  "pick_costs": {
+    "_position_update_batch": 0.0,
+    "_velocity_update_batch": 0.5,
+    "_adapt_inertia_weight": 0.0
+  },
+  "rejected_streaks": {
+    "_position_update_batch": 0,
+    "_velocity_update_batch": 0,
+    "_adapt_inertia_weight": 0
+  },
+  "method_metadata": {
+    "__init__": {
+      "loc": 74,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": true,
+      "has_loop": true,
+      "returns_value": false,
+      "called_by": [],
+      "in_call_loop": false,
+      "role": "init"
+    },
+    "_initialize_population": {
+      "loc": 18,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": true,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": false,
+      "role": "hot_path"
+    },
+    "_clip_to_bounds": {
+      "loc": 3,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_evaluate_batch",
+        "_position_update_batch",
+        "_restart_if_stagnant"
+      ],
+      "in_call_loop": true,
+      "role": "observer"
+    },
+    "_evaluate_batch": {
+      "loc": 10,
+      "calls": [
+        "_clip_to_bounds"
+      ],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "observer"
+    },
+    "_update_personal_best_batch": {
+      "loc": 5,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "leaf"
+    },
+    "_compute_local_best_batch": {
+      "loc": 21,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "control_flow"
+    },
+    "_compute_global_best": {
+      "loc": 10,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "leaf"
+    },
+    "_compute_diversity": {
+      "loc": 5,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_adapt_neighborhood_size"
+      ],
+      "in_call_loop": true,
+      "role": "observer"
+    },
+    "_adapt_inertia_weight": {
+      "loc": 27,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "leaf"
+    },
+    "_adapt_neighborhood_size": {
+      "loc": 10,
+      "calls": [
+        "_compute_diversity"
+      ],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "leaf"
+    },
+    "_adaptive_coefficients": {
+      "loc": 10,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_velocity_update_original",
+        "_velocity_update_variant_03_catC",
+        "_velocity_update_variant_05_catE",
+        "_velocity_update_variant_10_catB"
+      ],
+      "in_call_loop": true,
+      "role": "observer"
+    },
+    "_velocity_update_original": {
+      "loc": 37,
+      "calls": [
+        "_adaptive_coefficients"
+      ],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": false,
+      "called_by": [
+        "_dispatch_velocity_update"
+      ],
+      "in_call_loop": true,
+      "role": "control_flow"
+    },
+    "_velocity_update_variant_01_catA": {
+      "loc": 50,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": false,
+      "called_by": [
+        "_dispatch_velocity_update"
+      ],
+      "in_call_loop": true,
+      "role": "control_flow"
+    },
+    "_velocity_update_variant_03_catC": {
+      "loc": 62,
+      "calls": [
+        "_adaptive_coefficients"
+      ],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "_dispatch_velocity_update"
+      ],
+      "in_call_loop": true,
+      "role": "leaf"
+    },
+    "_velocity_update_variant_04_catD": {
+      "loc": 53,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": false,
+      "called_by": [
+        "_dispatch_velocity_update"
+      ],
+      "in_call_loop": true,
+      "role": "control_flow"
+    },
+    "_velocity_update_variant_05_catE": {
+      "loc": 113,
+      "calls": [
+        "_adaptive_coefficients"
+      ],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": false,
+      "called_by": [
+        "_dispatch_velocity_update"
+      ],
+      "in_call_loop": true,
+      "role": "control_flow"
+    },
+    "_velocity_update_variant_10_catB": {
+      "loc": 80,
+      "calls": [
+        "_adaptive_coefficients"
+      ],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": false,
+      "called_by": [
+        "_dispatch_velocity_update"
+      ],
+      "in_call_loop": true,
+      "role": "control_flow"
+    },
+    "_dispatch_velocity_update": {
+      "loc": 17,
+      "calls": [
+        "_velocity_update_original",
+        "_velocity_update_variant_01_catA",
+        "_velocity_update_variant_03_catC",
+        "_velocity_update_variant_04_catD",
+        "_velocity_update_variant_05_catE",
+        "_velocity_update_variant_10_catB"
+      ],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "leaf"
+    },
+    "_record_probe_score": {
+      "loc": 26,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "leaf"
+    },
+    "_compute_ucb_score": {
+      "loc": 16,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "_select_best_operator",
+        "_select_runner_up_operator"
+      ],
+      "in_call_loop": true,
+      "role": "observer"
+    },
+    "_select_best_operator": {
+      "loc": 12,
+      "calls": [
+        "_compute_ucb_score"
+      ],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": true,
+      "returns_value": true,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "observer"
+    },
+    "_select_runner_up_operator": {
+      "loc": 7,
+      "calls": [
+        "_compute_ucb_score"
+      ],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": true,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "observer"
+    },
+    "_position_update_batch": {
+      "loc": 22,
+      "calls": [
+        "_clip_to_bounds"
+      ],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": true,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "hot_path"
+    },
+    "_restart_if_stagnant": {
+      "loc": 25,
+      "calls": [
+        "_clip_to_bounds"
+      ],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "leaf"
+    },
+    "_update_local_best_from_personal": {
+      "loc": 5,
+      "calls": [],
+      "calls_func": false,
+      "modifies_state": false,
+      "modifies_hot_attr": false,
+      "has_loop": false,
+      "returns_value": false,
+      "called_by": [
+        "__call__"
+      ],
+      "in_call_loop": true,
+      "role": "leaf"
+    },
+    "__call__": {
+      "loc": 136,
+      "calls": [
+        "_adapt_inertia_weight",
+        "_adapt_neighborhood_size",
+        "_compute_global_best",
+        "_compute_local_best_batch",
+        "_dispatch_velocity_update",
+        "_evaluate_batch",
+        "_initialize_population",
+        "_position_update_batch",
+        "_record_probe_score",
+        "_restart_if_stagnant",
+        "_select_best_operator",
+        "_select_runner_up_operator",
+        "_update_local_best_from_personal",
+        "_update_personal_best_batch"
+      ],
+      "calls_func": false,
+      "modifies_state": true,
+      "modifies_hot_attr": true,
+      "has_loop": true,
+      "returns_value": true,
+      "called_by": [],
+      "in_call_loop": false,
+      "role": "hot_path"
+    }
+  }
+}

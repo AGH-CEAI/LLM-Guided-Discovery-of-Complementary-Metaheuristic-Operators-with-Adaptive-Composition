@@ -1,0 +1,451 @@
+This is iteration 10 of 10. Propose ONE replacement implementation for `_argmin`.
+
+Requirements:
+- Keep the EXACT function signature: `def _argmin(self, arr):`
+- Propose a SINGLE, FUNDAMENTALLY DIFFERENT strategy vs. the variants below
+- You may read any `self` attribute but do NOT modify `__init__` or other methods
+- The fenced code block must contain ONLY the single replacement function
+- Ensure numerical robustness (no division by zero, handle edge dims, clip to bounds)
+
+WHY PER-TASK COVERAGE MATTERS:
+After all variants are generated, an ADAPTIVE algorithm will be built that
+selects the best operator FOR EACH TASK at runtime (e.g. via Thompson Sampling
+or multi-armed bandit). This means:
+- We do NOT need a single variant that wins everywhere.
+- We DO need at least one variant that reaches error <= 1e-08 on EACH task.
+- Tasks marked UNSOLVED below are critical gaps. The bigger the remaining
+  error, the higher the priority — your variant should specifically target
+  the WORST unsolved tasks at the top of the priority list.
+
+TASK COVERAGE SUMMARY: 12 SOLVED (<= 1e-08), 12 UNSOLVED (of which 0 crashed) — out of 24.
+Goal: drive every task to error <= 1e-08. Focus first on the WORST unsolved tasks (top of the UNSOLVED list).
+
+UNSOLVED TASKS (worst best-error first — these are the priority targets):
+  Task 12: *** UNSOLVED *** — best=3.015e+03 by variant_07_idea_0.py      (target=1e-08, ~+11.5 decades above target)
+  Task  8: *** UNSOLVED *** — best=1.945e+03 by variant_08_idea_0.py      (target=1e-08, ~+11.3 decades above target)
+  Task 21: *** UNSOLVED *** — best=5.000e+01 by variant_09_idea_0.py      (target=1e-08, ~+9.7 decades above target)
+  Task 14: *** UNSOLVED *** — best=6.484e+00 by original.py               (target=1e-08, ~+8.8 decades above target)
+  Task 23: *** UNSOLVED *** — best=6.392e+00 by variant_01_idea_0.py      (target=1e-08, ~+8.8 decades above target)
+  Task 20: *** UNSOLVED *** — best=5.000e+00 by variant_07_idea_0.py      (target=1e-08, ~+8.7 decades above target)
+  Task 13: *** UNSOLVED *** — best=1.724e+00 by variant_03_idea_0.py      (target=1e-08, ~+8.2 decades above target)
+  Task  4: *** UNSOLVED *** — best=1.292e+00 by variant_06_idea_0.py      (target=1e-08, ~+8.1 decades above target)
+  Task  5: *** UNSOLVED *** — best=1.033e+00 by variant_09_idea_0.py      (target=1e-08, ~+8.0 decades above target)
+  Task  1: *** UNSOLVED *** — best=2.390e-01 by variant_04_idea_0.py      (target=1e-08, ~+7.4 decades above target)
+  Task 19: *** UNSOLVED *** — best=7.466e-04 by variant_09_idea_0.py      (target=1e-08, ~+4.9 decades above target)
+  Task 22: *** UNSOLVED *** — best=9.573e-06 by variant_06_idea_0.py      (target=1e-08, ~+3.0 decades above target)
+
+SOLVED TASKS (already at or below target — do not regress these):
+  Task  0: SOLVED  — best=1.000e-08 by original.py                   
+  Task  2: SOLVED  — best=1.000e-08 by original.py                   
+  Task  3: SOLVED  — best=1.000e-08 by original.py                   
+  Task  6: SOLVED  — best=1.000e-08 by original.py                   
+  Task  7: SOLVED  — best=1.000e-08 by original.py                   
+  Task  9: SOLVED  — best=1.000e-08 by original.py                   
+  Task 10: SOLVED  — best=1.000e-08 by original.py                   
+  Task 11: SOLVED  — best=1.000e-08 by original.py                   
+  Task 15: SOLVED  — best=1.000e-08 by original.py                   
+  Task 16: SOLVED  — best=1.000e-08 by variant_04_idea_0.py          
+  Task 17: SOLVED  — best=1.000e-08 by original.py                   
+  Task 18: SOLVED  — best=1.000e-08 by variant_01_idea_0.py          
+
+PER-TASK BENCHMARK ERRORS (raw numbers, lower is better):
+Task original.py           variant_02_idea_0.py  variant_03_idea_0.py  variant_04_idea_0.py  variant_05_idea_0.py  variant_06_idea_0.py  variant_07_idea_0.py  variant_08_idea_0.py  variant_09_idea_0.py  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0    1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            
+1    2.4053e-01            2.3996e-01            2.3969e-01            2.3901e-01            2.4009e-01            2.4085e-01            2.4056e-01            2.4042e-01            2.3985e-01            
+2    1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            
+3    1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            
+4    1.3050e+00            1.3290e+00            1.2936e+00            1.3031e+00            1.2967e+00            1.2921e+00            1.3097e+00            1.3440e+00            1.3095e+00            
+5    1.1847e+00            1.1836e+00            1.2556e+00            1.0872e+00            1.1447e+00            1.0948e+00            1.1543e+00            1.1177e+00            1.0326e+00            
+6    1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            
+7    1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            
+8    2.2054e+03            2.0804e+03            2.3360e+03            2.4354e+03            2.0656e+03            2.1760e+03            2.2070e+03            1.9452e+03            2.1631e+03            
+9    1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            
+10   1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            
+11   1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            
+12   3.1982e+03            3.4085e+03            3.4182e+03            3.1742e+03            3.2807e+03            3.3666e+03            3.0152e+03            3.2304e+03            3.0366e+03            
+13   2.8169e+00            3.8429e+00            1.7235e+00            2.5803e+00            3.1655e+00            3.2705e+00            2.7557e+00            4.3042e+00            4.1836e+00            
+14   6.4842e+00            6.7676e+00            6.6273e+00            6.7008e+00            6.6072e+00            6.6825e+00            6.6283e+00            6.7823e+00            6.6924e+00            
+15   1.0000e-08            1.3333e-08            2.0000e-08            5.2960e+02            5.2960e+02            4.0000e-08            1.3333e-08            1.0000e-08            1.0000e-08            
+16   1.3333e-08            5.3415e+02            5.3641e+02            1.0000e-08            4.0000e-08            2.0000e-08            4.0000e-08            5.5101e+02            2.0000e-08            
+17   1.0000e-08            5.2960e+02            4.0000e-08            1.0000e-08            1.3333e-08            1.3333e-08            1.3333e-08            1.3333e-08            1.0000e-08            
+18   1.3333e-08            1.3333e-08            1.3333e-08            1.0000e-08            1.0000e-08            4.0000e-08            1.0000e-08            1.0000e-08            1.0000e-08            
+19   7.5826e-04            7.6335e-04            7.7229e-04            7.4766e-04            7.5648e-04            7.7383e-04            7.7599e-04            7.7369e-04            7.4656e-04            
+20   5.0000e+00            5.0000e+00            5.0000e+00            5.0000e+00            5.0000e+00            5.0000e+00            5.0000e+00            5.0000e+00            5.0000e+00            
+21   5.0000e+01            5.0000e+01            5.0000e+01            5.0000e+01            5.0000e+01            5.0000e+01            5.0000e+01            5.0000e+01            5.0000e+01            
+22   9.8545e-06            9.6480e-06            1.0029e-05            9.6640e-06            9.8364e-06            9.5733e-06            9.7574e-06            1.0191e-05            1.0386e-05            
+23   7.0221e+00            9.4992e+00            8.5456e+00            9.7686e+00            1.0322e+01            6.5703e+00            6.5133e+00            9.1065e+00            1.0344e+01            
+
+PRIORITY TARGETS — UNSOLVED TASKS, WORST FIRST (drive these toward 1e-08):
+  Task 12: best error so far = 3.015e+03  (target = 1e-08)
+  Task  8: best error so far = 1.945e+03  (target = 1e-08)
+  Task 21: best error so far = 5.000e+01  (target = 1e-08)
+  Task 14: best error so far = 6.484e+00  (target = 1e-08)
+  Task 23: best error so far = 6.392e+00  (target = 1e-08)
+  Task 20: best error so far = 5.000e+00  (target = 1e-08)
+  Task 13: best error so far = 1.724e+00  (target = 1e-08)
+  Task  4: best error so far = 1.292e+00  (target = 1e-08)
+  ... and 4 other unsolved task(s).
+
+LABELS OF PREVIOUSLY PROPOSED VARIANTS (do NOT repeat these ideas):
+Idea 0, Idea 0, Idea 0, Idea 0, Idea 0, Idea 0, Idea 0, Idea 0, Idea 0
+
+Your new proposal MUST be designed to crush the error on the WORST unsolved
+tasks above. It is acceptable — even expected — for the new variant to be
+worse than existing variants on already-SOLVED tasks; the adaptive selector
+will handle that. Reason explicitly about the priority targets:
+1. What property of those WORST unsolved tasks (multimodality, ill-conditioning,
+   separability, ruggedness, noise, deceptive local optima, narrow basins,
+   non-separable rotation, etc.) is preventing existing operators from reaching
+   1e-08? Use the per-task error magnitudes as evidence — errors
+   stuck at ~1e+1 vs ~1e-3 vs ~1e-6 imply different failure modes.
+2. What specific mechanism in your proposed operator is designed to break
+   through that exact obstacle and push the error several orders of magnitude
+   lower?
+3. Why is this approach fundamentally different from the prior variants —
+   especially from whichever variant currently holds the best (but still
+   insufficient) error on the priority tasks?
+
+Current implementation:
+```python
+def _argmin(self, arr):
+        return int(np.argmin(arr))
+```
+
+Full algorithm for context:
+```python
+import numpy as np
+
+
+class CulturalDEWithAdaptiveArchive:
+    """
+    Cultural Differential Evolution with Adaptive Archive, Velocity-Guided
+    Mutation, and Targeted Local Search.
+    
+    Key innovations:
+    - Current-to-pbest/mean mutation with cultural guidance
+    - Velocity-based momentum for exploration continuity
+    - Adaptive F/CR based on exponential moving average success
+    - Bounded archive for diversity maintenance
+    - Stagnation-triggered local search on best candidate
+    - Diversity-aware restart mechanism
+    """
+    
+    def __init__(self, dim, *args, **kwargs):
+        self.dim = dim
+        self.NP = min(max(4 * dim, 60), 300)
+        self.lower = -100.0
+        self.upper = 100.0
+        self.p_best_frac = 0.15
+        self.archive_max = self.NP // 2
+        self.F_init = 0.6
+        self.CR_init = 0.85
+        self.F_min, self.F_max = 0.3, 1.2
+        self.CR_min, self.CR_max = 0.3, 0.95
+        self.local_search_interval = 50
+        self.local_search_radius = 0.1
+        self.diversity_threshold = 1e-6
+        self.stagnation_limit = 80
+        
+    def __call__(self, func, stopping_condition):
+        population = self._initialize_population()
+        fitness = self._eval_wrapper(func, population)
+        archive = self._init_archive(population, fitness)
+        velocity = self._init_velocity()
+        F, CR = self._init_parameters()
+        F_ema, CR_ema = F, CR
+        success_F, success_CR = [], []
+        best_idx = self._argmin(fitness)
+        f_best, x_best = fitness[best_idx], population[best_idx].copy()
+        stagnation = 0
+        gen = 0
+        
+        while not stopping_condition():
+            trials, velocity = self._build_trials_batched(population, velocity, F, CR, archive, fitness)
+            trial_fit = self._eval_wrapper(func, trials)
+            
+            if len(trial_fit) < len(trials):
+                valid = len(trial_fit)
+                trials, trial_fit = trials[:valid], trial_fit[:valid]
+                if valid == 0:
+                    break
+            
+            if stopping_condition():
+                break
+            
+            population, fitness, archive, success_F, success_CR = self._select_survivors_batch(
+                population, fitness, trials, trial_fit, archive, success_F, success_CR
+            )
+            
+            F, CR, F_ema, CR_ema = self._adapt_parameters_batch(
+                F, CR, F_ema, CR_ema, success_F, success_CR
+            )
+            
+            new_best_idx = self._argmin(fitness)
+            if fitness[new_best_idx] < f_best - 1e-12:
+                f_best, x_best = fitness[new_best_idx], population[new_best_idx].copy()
+                stagnation = 0
+            else:
+                stagnation += 1
+            
+            velocity = self._update_velocity_batch(population, velocity, x_best)
+            
+            if stagnation >= self.local_search_interval:
+                x_best, f_best = self._apply_adaptive_local_search(
+                    func, x_best, f_best, self.local_search_radius
+                )
+                stagnation = 0
+            
+            if self._compute_diversity(population) < self.diversity_threshold:
+                population = self._restart_if_stagnant(population, fitness, x_best)
+                velocity = self._init_velocity()
+            
+            gen += 1
+        
+        return f_best, x_best
+    
+    def _initialize_population(self):
+        return np.random.uniform(self.lower, self.upper, (self.NP, self.dim))
+    
+    def _init_archive(self, population, fitness):
+        top_k = min(self.archive_max, self.NP // 4)
+        top_indices = np.argpartition(fitness, top_k)[:top_k]
+        return population[top_indices].copy()
+    
+    def _init_velocity(self):
+        range_val = self.upper - self.lower
+        return np.random.uniform(-0.1 * range_val, 0.1 * range_val, (self.NP, self.dim))
+    
+    def _init_parameters(self):
+        return self.F_init, self.CR_init
+    
+    def _eval_wrapper(self, func, population):
+        clipped = self._clip_to_bounds_batch(population)
+        return func(clipped)
+    
+    def _clip_to_bounds_batch(self, pop):
+        return np.clip(pop, self.lower, self.upper)
+    
+    def _argmin(self, arr):
+        return int(np.argmin(arr))
+    
+    def _build_trials_batched(self, population, velocity, F, CR, archive, fitness):
+        mutated = self._mutate_current_to_pbest_with_culture(
+            population, fitness, archive, F
+        )
+        vel_scaled = velocity * 0.1 * np.random.uniform(0.8, 1.2)
+        mutated = mutated + vel_scaled
+        trials = self._crossover_batch(population, mutated, CR)
+        new_velocity = mutated - population
+        return trials, new_velocity
+    
+    def _mutate_current_to_pbest_with_culture(self, population, fitness, archive, F):
+        NP, dim = population.shape
+        pbest_count = max(1, int(self.p_best_frac * NP))
+        pbest_indices = np.argpartition(fitness, pbest_count)[:pbest_count]
+        pbest = population[np.random.choice(pbest_indices)]
+        
+        r1_idx = np.random.choice(NP, NP, replace=True)
+        r2_idx = np.random.choice(NP, NP, replace=True)
+        while np.any(r1_idx == np.arange(NP)) or np.any(r2_idx == np.arange(NP)):
+            r1_idx = np.random.choice(NP, NP, replace=True)
+            r2_idx = np.random.choice(NP, NP, replace=True)
+        
+        r1, r2 = population[r1_idx], population[r2_idx]
+        
+        if len(archive) > 0:
+            arch_idx = np.random.choice(len(archive), NP, replace=True)
+            r3 = archive[arch_idx]
+        else:
+            r3 = population[np.random.choice(NP, NP, replace=True)]
+        
+        mean_target = np.mean(population, axis=0)
+        cultural_weight = np.random.uniform(0.0, 0.3, (NP, 1))
+        
+        mutated = population + F * (pbest - population) + F * (r1 - r2) + F * cultural_weight * (mean_target - population)
+        mutated = self._clip_to_bounds_batch(mutated)
+        return mutated
+    
+    def _crossover_batch(self, target, donor, CR):
+        NP, dim = target.shape
+        j_rand = np.random.randint(0, dim, NP)
+        mask = np.random.random((NP, dim)) < CR
+        mask[np.arange(NP), j_rand] = True
+        trial = np.where(mask, donor, target)
+        return trial
+    
+    def _select_survivors_batch(self, population, fitness, trials, trial_fit, 
+                                 archive, success_F, success_CR):
+        NP = len(population)
+        improved = trial_fit < fitness
+        
+        new_pop = population.copy()
+        new_fit = fitness.copy()
+        
+        improve_idx = np.where(improved)[0]
+        for idx in improve_idx:
+            new_pop[idx] = trials[idx]
+            new_fit[idx] = trial_fit[idx]
+        
+        for idx in improve_idx:
+            F_i = np.random.uniform(self.F_min, self.F_max)
+            CR_i = np.random.uniform(self.CR_min, self.CR_max)
+            success_F.append(F_i)
+            success_CR.append(CR_i)
+        
+        new_archive = self._update_archive_batch(archive, new_pop[improve_idx], 
+                                                  new_fit[improve_idx])
+        
+        if len(success_F) > 20:
+            trim = len(success_F) - 20
+            success_F = success_F[trim:]
+            success_CR = success_CR[trim:]
+        
+        return new_pop, new_fit, new_archive, success_F, success_CR
+    
+    def _update_archive_batch(self, archive, new_solutions, new_fitness):
+        if len(new_solutions) == 0:
+            return archive
+
+        # Combine archive and new solutions
+        if len(archive) > 0:
+            combined = np.vstack([archive, new_solutions])
+            combined_fit = np.concatenate([np.full(len(archive), -np.inf), new_fitness])
+        else:
+            combined = new_solutions
+            combined_fit = new_fitness.copy()
+
+        # Remove near-duplicates (keep the better one)
+        unique_mask = self._find_unique_solutions(combined)
+        combined = combined[unique_mask]
+        combined_fit = combined_fit[unique_mask]
+
+        n = len(combined)
+        if n <= self.archive_max:
+            return combined
+
+        # Compute minimum distance to nearest neighbor for diversity metric
+        n_combined = len(combined)
+        min_dists = np.full(n_combined, np.inf)
+
+        # Vectorized distance computation (batch for efficiency)
+        chunk_size = 500
+        for i in range(0, n_combined, chunk_size):
+            end_i = min(i + chunk_size, n_combined)
+            chunk = combined[i:end_i]  # (chunk_size, dim)
+            # Compute distances to all solutions
+            diffs = combined[np.newaxis, :, :] - chunk[:, np.newaxis, :]  # (chunk, n, dim)
+            dists = np.linalg.norm(diffs, axis=2)  # (chunk, n)
+            np.fill_diagonal(dists[i:i+chunk_size, :][:end_i-i], np.inf)  # Mask self-distances
+            min_dists[i:end_i] = np.min(dists, axis=1)
+
+        # Normalize fitness (lower is better, so negate for proper scoring)
+        fit_min, fit_max = np.min(combined_fit), np.max(combined_fit)
+        fit_range = fit_max - fit_min + 1e-15
+        fitness_score = 1.0 - (combined_fit - fit_min) / fit_range  # Higher = better
+
+        # Normalize diversity (higher distance = better diversity)
+        dist_max = np.max(min_dists) + 1e-15
+        diversity_score = min_dists / dist_max
+
+        # Composite: balance fitness (70%) and diversity (30%)
+        # For hard problems, diversity helps escape local optima
+        composite = 0.7 * fitness_score + 0.3 * diversity_score
+
+        # Select top archive_max by composite score
+        top_indices = np.argsort(composite)[-self.archive_max:]
+
+        return combined[top_indices]
+    
+    def _find_unique_solutions(self, solutions, tol=1e-3):
+        if len(solutions) <= 1:
+            return np.ones(len(solutions), dtype=bool)
+        
+        n = len(solutions)
+        is_unique = np.ones(n, dtype=bool)
+        for i in range(n):
+            if not is_unique[i]:
+                continue
+            diffs = np.abs(solutions[i] - solutions[i+1:]) if i+1 < n else np.array([])
+            if len(diffs) > 0 and np.any(np.all(diffs < tol, axis=1)):
+                is_unique[i+1:] = False
+        return is_unique
+    
+    def _adapt_parameters_batch(self, F, CR, F_ema, CR_ema, success_F, success_CR):
+        if len(success_F) >= 5:
+            F_ema = 0.9 * F_ema + 0.1 * np.mean(success_F[-10:])
+            CR_ema = 0.9 * CR_ema + 0.1 * np.mean(success_CR[-10:])
+            F = np.clip(F_ema + np.random.uniform(-0.1, 0.1), self.F_min, self.F_max)
+            CR = np.clip(CR_ema + np.random.uniform(-0.1, 0.1), self.CR_min, self.CR_max)
+        return F, CR, F_ema, CR_ema
+    
+    def _update_velocity_batch(self, population, velocity, x_best):
+        NP = len(population)
+        inertia = 0.7
+        cognitive = 1.5
+        social = 1.5
+        
+        r1 = np.random.uniform(0, 1, (NP, self.dim))
+        r2 = np.random.uniform(0, 1, (NP, self.dim))
+        
+        new_vel = inertia * velocity + \
+                  cognitive * r1 * (x_best - population) + \
+                  social * r2 * (np.mean(population, axis=0) - population)
+        
+        max_vel = (self.upper - self.lower) * 0.2
+        new_vel = np.clip(new_vel, -max_vel, max_vel)
+        return new_vel
+    
+    def _apply_adaptive_local_search(self, func, x_best, f_best, radius):
+        history = [x_best.copy()]
+        current = x_best.copy()
+        current_f = f_best
+        
+        for _ in range(3):
+            step = np.random.uniform(-radius, radius, self.dim)
+            candidate = self._clip_to_bounds_batch(current + step)
+            cand_f = self._eval_wrapper(func, candidate.reshape(1, -1))[0]
+            
+            if cand_f < current_f:
+                current = candidate
+                current_f = cand_f
+                radius *= 1.2
+            else:
+                radius *= 0.5
+            
+            history.append(current.copy())
+        
+        if current_f < f_best:
+            return current, current_f
+        return x_best, f_best
+    
+    def _compute_diversity(self, population):
+        if len(population) < 2:
+            return 1.0
+        
+        centroid = np.mean(population, axis=0)
+        distances = np.linalg.norm(population - centroid, axis=1)
+        return float(np.mean(distances))
+    
+    def _restart_if_stagnant(self, population, fitness, x_best):
+        NP = len(population)
+        new_pop = population.copy()
+        
+        worst_count = NP // 3
+        worst_indices = np.argpartition(fitness, -worst_count)[-worst_count:]
+        
+        for idx in worst_indices:
+            new_pop[idx] = x_best + np.random.uniform(-10, 10, self.dim)
+        
+        new_pop = self._clip_to_bounds_batch(new_pop)
+        return new_pop
+
+```
+
+Respond with exactly ONE idea using the format:
+**Idea: Short Name**
+One-line description.
+```python
+def _argmin(self, ...):
+    ...
+```

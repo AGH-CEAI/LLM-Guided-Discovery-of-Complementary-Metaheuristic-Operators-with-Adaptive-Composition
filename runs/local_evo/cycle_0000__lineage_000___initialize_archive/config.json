@@ -1,0 +1,21 @@
+{
+  "run_root": "runs/local_evo",
+  "max_cycles": 1000000,
+  "max_lineages": 1000000,
+  "max_failures_per_lineage": 3,
+  "n_seeds": 4,
+  "seed_class_dim": 30,
+  "variant_provider": "llamacpp",
+  "variant_model": null,
+  "adaptive_provider": "llamacpp",
+  "adaptive_model": null,
+  "budget": 1000000,
+  "repetitions": 6,
+  "n_ideas": 8,
+  "n_adaptive_tries": 3,
+  "keys": "llm_keys.json",
+  "cycle_dir": "runs\\local_evo\\cycle_0000__lineage_000___initialize_archive",
+  "parent_algorithm": "runs\\local_evo\\lineage_000\\champion_gen0__seed_2_CovarianceGuidedEvolutionStrategy.py",
+  "target_method": "_initialize_archive",
+  "timestamp": "2026-04-17T23:03:35.518666"
+}

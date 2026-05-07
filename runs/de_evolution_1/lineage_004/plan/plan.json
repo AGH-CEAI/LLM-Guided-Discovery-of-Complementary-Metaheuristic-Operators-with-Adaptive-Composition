@@ -1,0 +1,22 @@
+{
+  "lineage_id": 4,
+  "plan": [
+    "_generate_parameters_batch",
+    "_select_survivors_batch",
+    "_update_memory"
+  ],
+  "max_picks_per_method": 2,
+  "banned_methods": [
+    "_crossover_batch",
+    "_mutate_batch"
+  ],
+  "pick_counts": {
+    "_restart": 1,
+    "_detect_stagnation": 1,
+    "_update_step_size": 1,
+    "_mutate_batch": 2,
+    "_generate_parameters_batch": 1,
+    "_crossover_batch": 2,
+    "_select_survivors_batch": 1
+  }
+}

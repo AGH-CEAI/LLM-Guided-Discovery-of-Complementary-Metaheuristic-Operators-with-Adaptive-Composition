@@ -1,0 +1,14 @@
+{
+  "id": "E",
+  "name": "Topology / graph-based",
+  "iteration": 5,
+  "focus_task": 14,
+  "focus_mode": "phase1_random",
+  "history_best_value": 4.878480430943311,
+  "history_best_source": "original.py",
+  "history_best": {
+    "value": 4.878480430943311,
+    "source_algo": "original.py",
+    "source_dir": "runs\\gnbg3\\cycle_0000__lineage_000__step1__adapt_parameters"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "lineage_id": 2,
+  "plan": [
+    "_adapt_parameters_batch",
+    "_mutate_variant09",
+    "_clip_to_bounds_batch"
+  ],
+  "max_picks_per_method": 2,
+  "banned_methods": [],
+  "pick_counts": {
+    "_eval_wrapper": 1,
+    "_clip_to_bounds_batch": 1,
+    "_update_velocity_batch": 1,
+    "_mutate_current_to_pbest_with_culture": 1,
+    "_adapt_parameters_batch": 1,
+    "_select_survivors_batch": 1
+  }
+}

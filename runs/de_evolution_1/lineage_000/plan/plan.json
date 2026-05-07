@@ -1,0 +1,9 @@
+{
+  "lineage_id": 0,
+  "plan": [
+    "_restart",
+    "_detect_stagnation",
+    "_update_step_size"
+  ],
+  "globally_adapted_methods_excluded": []
+}

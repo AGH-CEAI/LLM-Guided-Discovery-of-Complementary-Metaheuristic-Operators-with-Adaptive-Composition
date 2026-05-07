@@ -1,0 +1,57 @@
+Experiment: cycle_0012__lineage_004__step1__update_archive_batch
+Timestamp: 2026-04-23T13:16:04.134718
+
+============================================================
+ALGORITHM RANKINGS (by geometric mean of finite positive tasks)
+============================================================
+
+   1. variant_10_idea_0.py                     [variant   ]  geomean=1.339692e-04  (24/24 valid)
+   2. variant_06_idea_0.py                     [variant   ]  geomean=1.360163e-04  (24/24 valid)
+   3. variant_02_idea_0.py                     [variant   ]  geomean=1.399361e-04  (24/24 valid)
+   4. variant_08_idea_0.py                     [variant   ]  geomean=1.412017e-04  (24/24 valid)
+   5. variant_03_idea_0.py                     [variant   ]  geomean=1.473853e-04  (24/24 valid)
+   6. original.py                              [original  ]  geomean=1.488493e-04  (24/24 valid)
+   7. adaptive_attempt_2.py                    [adaptive  ]  geomean=1.561056e-04  (24/24 valid)
+   8. variant_05_idea_0.py                     [variant   ]  geomean=1.605789e-04  (24/24 valid)
+   9. variant_04_idea_0.py                     [variant   ]  geomean=3.739181e-04  (24/24 valid)
+  10. adaptive_attempt_3.py                    [adaptive  ]  geomean=3.814781e-04  (24/24 valid)
+  11. variant_09_idea_0.py                     [variant   ]  geomean=3.870972e-04  (24/24 valid)
+  12. variant_01_idea_0.py                     [variant   ]  geomean=1.000971e-03  (24/24 valid)
+
+============================================================
+PER-TASK BEST VARIANTS
+============================================================
+
+Task  0: SKIPPED (trivial)
+Task  1: variant_03_idea_0.py  (error=2.387919e-01)
+Task  2: SKIPPED (trivial)
+Task  3: SKIPPED (trivial)
+Task  4: variant_05_idea_0.py  (error=1.289361e+00)
+Task  5: variant_01_idea_0.py  (error=1.068881e+00)
+Task  6: SKIPPED (trivial)
+Task  7: SKIPPED (trivial)
+Task  8: variant_09_idea_0.py  (error=1.988259e+03)
+Task  9: SKIPPED (trivial)
+Task 10: SKIPPED (trivial)
+Task 11: SKIPPED (trivial)
+Task 12: variant_01_idea_0.py  (error=2.562010e+03)
+Task 13: variant_02_idea_0.py  (error=1.653860e+00)
+Task 14: variant_10_idea_0.py  (error=6.484174e+00)
+Task 15: SKIPPED (trivial)
+Task 16: SKIPPED (trivial)
+Task 17: SKIPPED (trivial)
+Task 18: SKIPPED (trivial)
+Task 19: variant_03_idea_0.py  (error=7.227374e-04)
+Task 20: variant_01_idea_0.py  (error=5.000001e+00)
+Task 21: variant_09_idea_0.py  (error=5.000000e+01)
+Task 22: variant_06_idea_0.py  (error=9.649270e-06)
+Task 23: variant_01_idea_0.py  (error=5.755298e+00)
+
+WIN COUNTS:
+  variant_01_idea_0.py: 4 wins
+  variant_03_idea_0.py: 2 wins
+  variant_09_idea_0.py: 2 wins
+  variant_05_idea_0.py: 1 wins
+  variant_02_idea_0.py: 1 wins
+  variant_10_idea_0.py: 1 wins
+  variant_06_idea_0.py: 1 wins

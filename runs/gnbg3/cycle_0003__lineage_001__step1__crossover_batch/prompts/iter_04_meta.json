@@ -1,0 +1,14 @@
+{
+  "id": "D",
+  "name": "Fitness-landscape / rank-based",
+  "iteration": 4,
+  "focus_task": 18,
+  "focus_mode": "phase1_random",
+  "history_best_value": 20.383566457891817,
+  "history_best_source": "original.py",
+  "history_best": {
+    "value": 20.383566457891817,
+    "source_algo": "original.py",
+    "source_dir": "runs\\gnbg3\\cycle_0003__lineage_001__step1__crossover_batch"
+  }
+}

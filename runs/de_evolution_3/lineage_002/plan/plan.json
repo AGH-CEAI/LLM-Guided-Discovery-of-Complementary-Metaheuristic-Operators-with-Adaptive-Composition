@@ -1,0 +1,15 @@
+{
+  "lineage_id": 2,
+  "plan": [
+    "_update_operator_reward",
+    "_update_covariance_matrix",
+    "_sample_population_batch"
+  ],
+  "max_picks_per_method": 2,
+  "banned_methods": [],
+  "pick_counts": {
+    "_update_covariance_matrix": 1,
+    "_sample_population_batch": 1,
+    "_adapt_step_size": 1
+  }
+}

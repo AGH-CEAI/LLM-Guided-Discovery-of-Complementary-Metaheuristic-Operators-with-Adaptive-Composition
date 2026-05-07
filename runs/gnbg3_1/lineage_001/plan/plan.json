@@ -1,0 +1,11 @@
+{
+  "lineage_id": 1,
+  "plan": [
+    "_adapt_covariance",
+    "_adapt_step_size",
+    "_sample_trials_batch"
+  ],
+  "max_picks_per_method": 2,
+  "banned_methods": [],
+  "pick_counts": {}
+}

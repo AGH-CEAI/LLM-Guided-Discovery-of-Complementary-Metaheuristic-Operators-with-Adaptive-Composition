@@ -1,0 +1,14 @@
+{
+  "id": "H",
+  "name": "Hybrid / multi-strategy",
+  "iteration": 8,
+  "focus_task": 6,
+  "focus_mode": "fallback",
+  "history_best_value": 0.0025540830369939803,
+  "history_best_source": "variant_02_catB_t21_idea_0.py",
+  "history_best": {
+    "value": 0.0025540830369939803,
+    "source_algo": "variant_02_catB_t21_idea_0.py",
+    "source_dir": "runs\\gnbg3\\cycle_0003__lineage_001__step1__crossover_batch"
+  }
+}

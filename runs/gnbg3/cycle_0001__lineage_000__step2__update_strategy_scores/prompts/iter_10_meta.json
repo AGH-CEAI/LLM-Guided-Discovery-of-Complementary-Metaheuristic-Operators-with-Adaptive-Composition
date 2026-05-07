@@ -1,0 +1,14 @@
+{
+  "id": "B",
+  "name": "Spectral / linear-algebraic",
+  "iteration": 10,
+  "focus_task": 10,
+  "focus_mode": "phase2_max_variance",
+  "history_best_value": 1.1270077337129261e-07,
+  "history_best_source": "original.py",
+  "history_best": {
+    "value": 1.1270077337129261e-07,
+    "source_algo": "original.py",
+    "source_dir": "runs\\gnbg3\\cycle_0000__lineage_000__step1__adapt_parameters"
+  }
+}

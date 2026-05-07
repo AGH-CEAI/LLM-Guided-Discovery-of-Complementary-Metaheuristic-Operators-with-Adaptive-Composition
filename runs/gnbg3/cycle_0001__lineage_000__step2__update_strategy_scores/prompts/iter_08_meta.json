@@ -1,0 +1,14 @@
+{
+  "id": "H",
+  "name": "Hybrid / multi-strategy",
+  "iteration": 8,
+  "focus_task": 12,
+  "focus_mode": "phase2_max_variance",
+  "history_best_value": 0.11888630802014329,
+  "history_best_source": "variant_05_catE_t10_idea_0.py",
+  "history_best": {
+    "value": 0.11888630802014329,
+    "source_algo": "variant_05_catE_t10_idea_0.py",
+    "source_dir": "runs\\gnbg3\\cycle_0000__lineage_000__step1__adapt_parameters"
+  }
+}

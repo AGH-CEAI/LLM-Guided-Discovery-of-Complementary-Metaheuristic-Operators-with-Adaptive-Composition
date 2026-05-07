@@ -1,0 +1,12 @@
+{
+  "lineage_id": 2,
+  "plan": [
+    "_mutate_batch",
+    "_generate_parameters_batch",
+    "_crossover_batch"
+  ],
+  "globally_adapted_methods_excluded": [
+    "_detect_stagnation",
+    "_restart"
+  ]
+}

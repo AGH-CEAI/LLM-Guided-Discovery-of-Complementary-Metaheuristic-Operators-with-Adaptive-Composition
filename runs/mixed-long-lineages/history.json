@@ -1,0 +1,73 @@
+[
+  {
+    "cycle_index": 0,
+    "lineage_id": 0,
+    "cycle_dir": "runs\\mixed\\cycle_0000__lineage_000___adapt_strategy_probabilities",
+    "parent_algo_path": "runs\\mixed\\lineage_000\\champion_gen1__variant_06_idea_0.py",
+    "parent_geomean": 1.015782936493826,
+    "targeted_method": "_adapt_strategy_probabilities",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_adapt_F_CR_jade_style",
+      "_mutate_single_reflective",
+      "_adapt_strategy_probabilities"
+    ],
+    "best_algo_name": "variant_06_idea_0.py",
+    "best_algo_path": "runs\\mixed\\cycle_0000__lineage_000___adapt_strategy_probabilities\\variants\\variant_06_idea_0.py",
+    "best_geomean": 0.6142353522695895,
+    "accepted_as_champion": true,
+    "reason": "new geomean 6.142e-01 < incumbent 1.200e+00",
+    "adaptive_methods": [
+      "_adapt_strategy_probabilities"
+    ],
+    "timestamp": "2026-04-21T06:45:06.312696"
+  },
+  {
+    "cycle_index": 1,
+    "lineage_id": 0,
+    "cycle_dir": "runs\\mixed\\cycle_0001__lineage_000___crossover_batch",
+    "parent_algo_path": "runs\\mixed\\lineage_000\\champion_gen2__adaptive_attempt_3.py",
+    "parent_geomean": 0.6142353522695895,
+    "targeted_method": "_crossover_batch",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_adapt_F_CR_jade_style",
+      "_mutate_single_reflective",
+      "_crossover_batch"
+    ],
+    "best_algo_name": "adaptive_attempt_3.py",
+    "best_algo_path": "runs\\mixed\\cycle_0001__lineage_000___crossover_batch\\variants\\adaptive_attempt_3.py",
+    "best_geomean": 0.22579905967134162,
+    "accepted_as_champion": true,
+    "reason": "new geomean 2.258e-01 < incumbent 6.826e-01",
+    "adaptive_methods": [
+      "_adapt_strategy_probabilities",
+      "_crossover_batch"
+    ],
+    "timestamp": "2026-04-21T09:06:21.182527"
+  },
+  {
+    "cycle_index": 2,
+    "lineage_id": 0,
+    "cycle_dir": "runs\\mixed\\cycle_0002__lineage_000___crossover_block",
+    "parent_algo_path": "runs\\mixed\\lineage_000\\champion_gen2__adaptive_attempt_3.py",
+    "parent_geomean": 0.22579905967134162,
+    "targeted_method": "_crossover_block",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_adapt_F_CR_jade_style",
+      "_mutate_batch",
+      "_crossover_block"
+    ],
+    "best_algo_name": "original.py",
+    "best_algo_path": "runs\\mixed\\cycle_0002__lineage_000___crossover_block\\variants\\original.py",
+    "best_geomean": 0.22628643383970595,
+    "accepted_as_champion": false,
+    "reason": "new geomean 2.263e-01 >= incumbent 2.263e-01",
+    "adaptive_methods": [
+      "_adapt_strategy_probabilities",
+      "_crossover_batch"
+    ],
+    "timestamp": "2026-04-21T11:33:18.445307"
+  }
+]

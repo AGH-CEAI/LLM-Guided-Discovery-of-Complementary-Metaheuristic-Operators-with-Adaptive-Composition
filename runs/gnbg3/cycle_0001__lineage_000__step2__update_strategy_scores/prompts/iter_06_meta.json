@@ -1,0 +1,14 @@
+{
+  "id": "F",
+  "name": "Temporal / dynamical",
+  "iteration": 6,
+  "focus_task": 4,
+  "focus_mode": "phase2_max_variance",
+  "history_best_value": 1.9999984959467262e-08,
+  "history_best_source": "variant_05_catE_t10_idea_0.py",
+  "history_best": {
+    "value": 1.9999984959467262e-08,
+    "source_algo": "variant_05_catE_t10_idea_0.py",
+    "source_dir": "runs\\gnbg3\\cycle_0000__lineage_000__step1__adapt_parameters"
+  }
+}

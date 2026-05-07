@@ -1,0 +1,509 @@
+[
+  {
+    "cycle_index": 0,
+    "lineage_id": 0,
+    "cycle_dir": "runs\\gnbg3\\cycle_0000__lineage_000__step1__position_update_batch",
+    "parent_algo_path": "runs\\gnbg3\\lineage_000\\champion_gen1__variant_10_catB_idea_0.py",
+    "parent_geomean": 162.49995703016546,
+    "targeted_method": "_position_update_batch",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_batch",
+      "_velocity_update_batch",
+      "_adapt_inertia_weight"
+    ],
+    "lineage_plan": [
+      "_position_update_batch",
+      "_velocity_update_batch",
+      "_adapt_inertia_weight"
+    ],
+    "plan_step": 0,
+    "best_algo_name": "variant_10_catB_idea_0.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0000__lineage_000__step1__position_update_batch\\variants\\variant_10_catB_idea_0.py",
+    "best_geomean": 54.46916806572801,
+    "accepted_as_champion": true,
+    "reason": "new geomean 5.447e+01 < incumbent 1.625e+02  (rel. improvement +66.48%)",
+    "improvement_ratio": 0.6648050309599978,
+    "adaptive_methods": [
+      "_position_update_batch"
+    ],
+    "timestamp": "2026-04-30T16:47:03.657771"
+  },
+  {
+    "cycle_index": 1,
+    "lineage_id": 0,
+    "cycle_dir": "runs\\gnbg3\\cycle_0001__lineage_000__step2__velocity_update_batch",
+    "parent_algo_path": "runs\\gnbg3\\lineage_000\\champion_gen2__adaptive_attempt_1.py",
+    "parent_geomean": 54.46916806572801,
+    "targeted_method": "_velocity_update_batch",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_batch",
+      "_velocity_update_batch",
+      "_adapt_inertia_weight"
+    ],
+    "lineage_plan": [
+      "_position_update_batch",
+      "_velocity_update_batch",
+      "_adapt_inertia_weight"
+    ],
+    "plan_step": 1,
+    "best_algo_name": "adaptive_attempt_1.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0001__lineage_000__step2__velocity_update_batch\\variants\\adaptive_attempt_1.py",
+    "best_geomean": 51.10153041151734,
+    "accepted_as_champion": true,
+    "reason": "new geomean 5.110e+01 < incumbent 5.447e+01  (rel. improvement +6.18%)",
+    "improvement_ratio": 0.0618264932951967,
+    "adaptive_methods": [
+      "_position_update_batch",
+      "_velocity_update_batch"
+    ],
+    "timestamp": "2026-04-30T20:48:51.134690"
+  },
+  {
+    "cycle_index": 2,
+    "lineage_id": 0,
+    "cycle_dir": "runs\\gnbg3\\cycle_0002__lineage_000__step3__adapt_inertia_weight",
+    "parent_algo_path": "runs\\gnbg3\\lineage_000\\champion_gen3__variant_01_catA_idea_0.py",
+    "parent_geomean": 51.10153041151734,
+    "targeted_method": "_adapt_inertia_weight",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_batch",
+      "_velocity_update_batch",
+      "_adapt_inertia_weight"
+    ],
+    "lineage_plan": [
+      "_position_update_batch",
+      "_velocity_update_batch",
+      "_adapt_inertia_weight"
+    ],
+    "plan_step": 2,
+    "best_algo_name": "variant_01_catA_idea_0.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0002__lineage_000__step3__adapt_inertia_weight\\variants\\variant_01_catA_idea_0.py",
+    "best_geomean": 42.85568332134752,
+    "accepted_as_champion": true,
+    "reason": "new geomean 4.286e+01 < incumbent 5.110e+01  (rel. improvement +16.14%)",
+    "improvement_ratio": 0.1613620379618094,
+    "adaptive_methods": [
+      "_adapt_inertia_weight",
+      "_position_update_batch",
+      "_velocity_update_batch"
+    ],
+    "timestamp": "2026-05-01T00:01:55.849476"
+  },
+  {
+    "cycle_index": 3,
+    "lineage_id": 1,
+    "cycle_dir": "runs\\gnbg3\\cycle_0003__lineage_001__step1__position_update_batch",
+    "parent_algo_path": "runs\\gnbg3\\lineage_001\\champion_gen1__adaptive_attempt_2.py",
+    "parent_geomean": 45.06459901116033,
+    "targeted_method": "_position_update_batch",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_batch",
+      "_velocity_update_variant_10_catB",
+      "_adapt_inertia_weight"
+    ],
+    "lineage_plan": [
+      "_position_update_batch",
+      "_velocity_update_variant_10_catB",
+      "_adapt_inertia_weight"
+    ],
+    "plan_step": 0,
+    "best_algo_name": "adaptive_attempt_2.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0003__lineage_001__step1__position_update_batch\\variants\\adaptive_attempt_2.py",
+    "best_geomean": 35.464760798421054,
+    "accepted_as_champion": true,
+    "reason": "new geomean 3.546e+01 < incumbent 4.506e+01  (rel. improvement +21.30%)",
+    "improvement_ratio": 0.2130239350484814,
+    "adaptive_methods": [
+      "_position_update_batch"
+    ],
+    "timestamp": "2026-05-01T06:30:53.776421"
+  },
+  {
+    "cycle_index": 4,
+    "lineage_id": 1,
+    "cycle_dir": "runs\\gnbg3\\cycle_0004__lineage_001__step3__adapt_inertia_weight",
+    "parent_algo_path": "runs\\gnbg3\\lineage_001\\champion_gen2__variant_10_catB_idea_0.py",
+    "parent_geomean": 35.464760798421054,
+    "targeted_method": "_adapt_inertia_weight",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_batch",
+      "_velocity_update_variant_10_catB",
+      "_adapt_inertia_weight"
+    ],
+    "lineage_plan": [
+      "_position_update_batch",
+      "_velocity_update_variant_10_catB",
+      "_adapt_inertia_weight"
+    ],
+    "plan_step": 2,
+    "best_algo_name": "variant_10_catB_idea_0.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0004__lineage_001__step3__adapt_inertia_weight\\variants\\variant_10_catB_idea_0.py",
+    "best_geomean": 26.035484818232792,
+    "accepted_as_champion": true,
+    "reason": "new geomean 2.604e+01 < incumbent 3.546e+01  (rel. improvement +26.59%)",
+    "improvement_ratio": 0.26587733197422464,
+    "adaptive_methods": [
+      "_adapt_inertia_weight",
+      "_position_update_batch"
+    ],
+    "timestamp": "2026-05-01T13:32:02.324259"
+  },
+  {
+    "cycle_index": 5,
+    "lineage_id": 2,
+    "cycle_dir": "runs\\gnbg3\\cycle_0005__lineage_002__step1__position_update_fitness_rank",
+    "parent_algo_path": "runs\\gnbg3\\lineage_002\\champion_gen1__variant_05_catE_idea_0.py",
+    "parent_geomean": 26.199600187110693,
+    "targeted_method": "_position_update_fitness_rank",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_fitness_rank",
+      "_position_update_svd_whitening",
+      "_position_update_temporal_drift"
+    ],
+    "lineage_plan": [
+      "_position_update_fitness_rank",
+      "_position_update_svd_whitening",
+      "_position_update_temporal_drift"
+    ],
+    "plan_step": 0,
+    "best_algo_name": "variant_05_catE_idea_0.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0005__lineage_002__step1__position_update_fitness_rank\\variants\\variant_05_catE_idea_0.py",
+    "best_geomean": 24.778552159937007,
+    "accepted_as_champion": true,
+    "reason": "new geomean 2.478e+01 < incumbent 2.620e+01  (rel. improvement +5.42%)",
+    "improvement_ratio": 0.054239302013196114,
+    "adaptive_methods": [
+      "_position_update_fitness_rank"
+    ],
+    "timestamp": "2026-05-01T18:39:13.956121"
+  },
+  {
+    "cycle_index": 6,
+    "lineage_id": 2,
+    "cycle_dir": "runs\\gnbg3\\cycle_0006__lineage_002__step2__position_update_svd_whitening",
+    "parent_algo_path": "runs\\gnbg3\\lineage_002\\champion_gen1__variant_05_catE_idea_0.py",
+    "parent_geomean": 24.778552159937007,
+    "targeted_method": "_position_update_svd_whitening",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_fitness_rank",
+      "_position_update_svd_whitening",
+      "_position_update_temporal_drift"
+    ],
+    "lineage_plan": [
+      "_position_update_fitness_rank",
+      "_position_update_svd_whitening",
+      "_position_update_temporal_drift"
+    ],
+    "plan_step": 1,
+    "best_algo_name": "original.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0006__lineage_002__step2__position_update_svd_whitening\\variants\\original.py",
+    "best_geomean": 24.778552159937007,
+    "accepted_as_champion": false,
+    "reason": "new geomean 2.478e+01 >= incumbent 2.478e+01",
+    "improvement_ratio": null,
+    "adaptive_methods": [
+      "_position_update_fitness_rank"
+    ],
+    "timestamp": "2026-05-02T01:41:07.993245"
+  },
+  {
+    "cycle_index": 7,
+    "lineage_id": 2,
+    "cycle_dir": "runs\\gnbg3\\cycle_0007__lineage_002__step3__position_update_temporal_drift",
+    "parent_algo_path": "runs\\gnbg3\\lineage_002\\champion_gen2__variant_02_catB_idea_0.py",
+    "parent_geomean": 24.778552159937007,
+    "targeted_method": "_position_update_temporal_drift",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_fitness_rank",
+      "_position_update_svd_whitening",
+      "_position_update_temporal_drift"
+    ],
+    "lineage_plan": [
+      "_position_update_fitness_rank",
+      "_position_update_svd_whitening",
+      "_position_update_temporal_drift"
+    ],
+    "plan_step": 2,
+    "best_algo_name": "variant_02_catB_idea_0.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0007__lineage_002__step3__position_update_temporal_drift\\variants\\variant_02_catB_idea_0.py",
+    "best_geomean": 23.254062397954765,
+    "accepted_as_champion": true,
+    "reason": "new geomean 2.325e+01 < incumbent 2.478e+01  (rel. improvement +6.15%)",
+    "improvement_ratio": 0.061524569803037166,
+    "adaptive_methods": [
+      "_position_update_fitness_rank",
+      "_position_update_temporal_drift"
+    ],
+    "timestamp": "2026-05-02T06:19:47.832117"
+  },
+  {
+    "cycle_index": 8,
+    "lineage_id": 3,
+    "cycle_dir": "runs\\gnbg3\\cycle_0008__lineage_003__step1__position_update_fitness_rank",
+    "parent_algo_path": "runs\\gnbg3\\lineage_003\\gbest_from_L002_C0007.py",
+    "parent_geomean": 23.79221442245254,
+    "targeted_method": "_position_update_fitness_rank",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn",
+      "_position_update_temporal_drift"
+    ],
+    "lineage_plan": [
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn",
+      "_position_update_temporal_drift"
+    ],
+    "plan_step": 0,
+    "best_algo_name": "original.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0008__lineage_003__step1__position_update_fitness_rank\\variants\\original.py",
+    "best_geomean": 23.79221442245254,
+    "accepted_as_champion": false,
+    "reason": "new geomean 2.379e+01 >= incumbent 2.379e+01",
+    "improvement_ratio": null,
+    "adaptive_methods": [],
+    "timestamp": "2026-05-02T12:23:23.200539"
+  },
+  {
+    "cycle_index": 9,
+    "lineage_id": 3,
+    "cycle_dir": "runs\\gnbg3\\cycle_0009__lineage_003__step2__position_update_centroid_knn",
+    "parent_algo_path": "runs\\gnbg3\\lineage_003\\gbest_from_L002_C0007.py",
+    "parent_geomean": 23.79221442245254,
+    "targeted_method": "_position_update_centroid_knn",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn",
+      "_position_update_temporal_drift"
+    ],
+    "lineage_plan": [
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn",
+      "_position_update_temporal_drift"
+    ],
+    "plan_step": 1,
+    "best_algo_name": "original.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0009__lineage_003__step2__position_update_centroid_knn\\variants\\original.py",
+    "best_geomean": 23.79221442245254,
+    "accepted_as_champion": false,
+    "reason": "new geomean 2.379e+01 >= incumbent 2.379e+01",
+    "improvement_ratio": null,
+    "adaptive_methods": [],
+    "timestamp": "2026-05-02T17:20:11.658643"
+  },
+  {
+    "cycle_index": 10,
+    "lineage_id": 3,
+    "cycle_dir": "runs\\gnbg3\\cycle_0010__lineage_003__step3__position_update_temporal_drift",
+    "parent_algo_path": "runs\\gnbg3\\lineage_003\\champion_gen1__variant_08_catH_idea_0.py",
+    "parent_geomean": 23.79221442245254,
+    "targeted_method": "_position_update_temporal_drift",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn",
+      "_position_update_temporal_drift"
+    ],
+    "lineage_plan": [
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn",
+      "_position_update_temporal_drift"
+    ],
+    "plan_step": 2,
+    "best_algo_name": "variant_08_catH_idea_0.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0010__lineage_003__step3__position_update_temporal_drift\\variants\\variant_08_catH_idea_0.py",
+    "best_geomean": 22.91206971944367,
+    "accepted_as_champion": true,
+    "reason": "new geomean 2.291e+01 < incumbent 2.379e+01  (rel. improvement +3.70%)",
+    "improvement_ratio": 0.03699297120398682,
+    "adaptive_methods": [
+      "_position_update_temporal_drift"
+    ],
+    "timestamp": "2026-05-03T01:58:27.575245"
+  },
+  {
+    "cycle_index": 11,
+    "lineage_id": 4,
+    "cycle_dir": "runs\\gnbg3\\cycle_0011__lineage_004__step1__velocity_update_base",
+    "parent_algo_path": "runs\\gnbg3\\lineage_004\\gbest_from_L003_C0010.py",
+    "parent_geomean": 23.67128013652637,
+    "targeted_method": "_velocity_update_base",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_velocity_update_base",
+      "_adapt_inertia_weight",
+      "_adapt_neighborhood_size"
+    ],
+    "lineage_plan": [
+      "_velocity_update_base",
+      "_adapt_inertia_weight",
+      "_adapt_neighborhood_size"
+    ],
+    "plan_step": 0,
+    "best_algo_name": "original.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0011__lineage_004__step1__velocity_update_base\\variants\\original.py",
+    "best_geomean": 23.67128013652637,
+    "accepted_as_champion": false,
+    "reason": "new geomean 2.367e+01 >= incumbent 2.367e+01",
+    "improvement_ratio": null,
+    "adaptive_methods": [],
+    "timestamp": "2026-05-03T10:30:36.903011"
+  },
+  {
+    "cycle_index": 12,
+    "lineage_id": 4,
+    "cycle_dir": "runs\\gnbg3\\cycle_0012__lineage_004__step2__adapt_inertia_weight",
+    "parent_algo_path": "runs\\gnbg3\\lineage_004\\gbest_from_L003_C0010.py",
+    "parent_geomean": 23.67128013652637,
+    "targeted_method": "_adapt_inertia_weight",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_velocity_update_base",
+      "_adapt_inertia_weight",
+      "_adapt_neighborhood_size"
+    ],
+    "lineage_plan": [
+      "_velocity_update_base",
+      "_adapt_inertia_weight",
+      "_adapt_neighborhood_size"
+    ],
+    "plan_step": 1,
+    "best_algo_name": "original.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0012__lineage_004__step2__adapt_inertia_weight\\variants\\original.py",
+    "best_geomean": 23.67128013652637,
+    "accepted_as_champion": false,
+    "reason": "new geomean 2.367e+01 >= incumbent 2.367e+01",
+    "improvement_ratio": null,
+    "adaptive_methods": [],
+    "timestamp": "2026-05-03T15:51:39.332798"
+  },
+  {
+    "cycle_index": 13,
+    "lineage_id": 4,
+    "cycle_dir": "runs\\gnbg3\\cycle_0013__lineage_004__step3__adapt_neighborhood_size",
+    "parent_algo_path": "runs\\gnbg3\\lineage_004\\champion_gen1__variant_03_catC_idea_0.py",
+    "parent_geomean": 23.67128013652637,
+    "targeted_method": "_adapt_neighborhood_size",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_velocity_update_base",
+      "_adapt_inertia_weight",
+      "_adapt_neighborhood_size"
+    ],
+    "lineage_plan": [
+      "_velocity_update_base",
+      "_adapt_inertia_weight",
+      "_adapt_neighborhood_size"
+    ],
+    "plan_step": 2,
+    "best_algo_name": "variant_03_catC_idea_0.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0013__lineage_004__step3__adapt_neighborhood_size\\variants\\variant_03_catC_idea_0.py",
+    "best_geomean": 14.176574181403419,
+    "accepted_as_champion": true,
+    "reason": "new geomean 1.418e+01 < incumbent 2.367e+01  (rel. improvement +40.11%)",
+    "improvement_ratio": 0.4011065688193172,
+    "adaptive_methods": [
+      "_adapt_neighborhood_size"
+    ],
+    "timestamp": "2026-05-03T21:39:53.863232"
+  },
+  {
+    "cycle_index": 14,
+    "lineage_id": 5,
+    "cycle_dir": "runs\\gnbg3\\cycle_0014__lineage_005__step1__position_update_temporal_drift",
+    "parent_algo_path": "runs\\gnbg3\\lineage_005\\champion_gen1__variant_04_catD_idea_0.py",
+    "parent_geomean": 15.003282037233635,
+    "targeted_method": "_position_update_temporal_drift",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_temporal_drift",
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn"
+    ],
+    "lineage_plan": [
+      "_position_update_temporal_drift",
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn"
+    ],
+    "plan_step": 0,
+    "best_algo_name": "variant_04_catD_idea_0.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0014__lineage_005__step1__position_update_temporal_drift\\variants\\variant_04_catD_idea_0.py",
+    "best_geomean": 13.331235779592438,
+    "accepted_as_champion": true,
+    "reason": "new geomean 1.333e+01 < incumbent 1.500e+01  (rel. improvement +11.14%)",
+    "improvement_ratio": 0.11144536598670085,
+    "adaptive_methods": [
+      "_position_update_temporal_drift"
+    ],
+    "timestamp": "2026-05-04T12:09:59.022046"
+  },
+  {
+    "cycle_index": 15,
+    "lineage_id": 5,
+    "cycle_dir": "runs\\gnbg3\\cycle_0015__lineage_005__step2__position_update_fitness_rank",
+    "parent_algo_path": "runs\\gnbg3\\lineage_005\\champion_gen1__variant_04_catD_idea_0.py",
+    "parent_geomean": 13.331235779592438,
+    "targeted_method": "_position_update_fitness_rank",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_temporal_drift",
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn"
+    ],
+    "lineage_plan": [
+      "_position_update_temporal_drift",
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn"
+    ],
+    "plan_step": 1,
+    "best_algo_name": "original.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0015__lineage_005__step2__position_update_fitness_rank\\variants\\original.py",
+    "best_geomean": 13.331235779592438,
+    "accepted_as_champion": false,
+    "reason": "new geomean 1.333e+01 >= incumbent 1.333e+01",
+    "improvement_ratio": null,
+    "adaptive_methods": [
+      "_position_update_temporal_drift"
+    ],
+    "timestamp": "2026-05-04T16:41:16.584726"
+  },
+  {
+    "cycle_index": 16,
+    "lineage_id": 5,
+    "cycle_dir": "runs\\gnbg3\\cycle_0016__lineage_005__step3__position_update_centroid_knn",
+    "parent_algo_path": "runs\\gnbg3\\lineage_005\\champion_gen1__variant_04_catD_idea_0.py",
+    "parent_geomean": 13.331235779592438,
+    "targeted_method": "_position_update_centroid_knn",
+    "selector_strategy": "llm",
+    "selector_candidates": [
+      "_position_update_temporal_drift",
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn"
+    ],
+    "lineage_plan": [
+      "_position_update_temporal_drift",
+      "_position_update_fitness_rank",
+      "_position_update_centroid_knn"
+    ],
+    "plan_step": 2,
+    "best_algo_name": "original.py",
+    "best_algo_path": "runs\\gnbg3\\cycle_0016__lineage_005__step3__position_update_centroid_knn\\variants\\original.py",
+    "best_geomean": 13.331235779592438,
+    "accepted_as_champion": false,
+    "reason": "new geomean 1.333e+01 >= incumbent 1.333e+01",
+    "improvement_ratio": null,
+    "adaptive_methods": [
+      "_position_update_temporal_drift"
+    ],
+    "timestamp": "2026-05-04T20:31:38.342577"
+  }
+]
